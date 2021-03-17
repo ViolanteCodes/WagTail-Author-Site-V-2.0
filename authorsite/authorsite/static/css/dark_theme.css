@@ -1,0 +1,92 @@
+html {
+    background-color: #141414;
+    color:#dee0e2;
+}
+body.template-homepage{
+    background-color: #141414;
+    color:#dee0e2;
+}
+div.container-dark {
+    background-color: #141414;
+}
+/* Landing Hero Image Styling */
+div.max-vh-75 {
+    max-height: 75vh;
+}
+img.max-vh-60 {
+    max-height: 60vh;
+}
+/*Header Custom Styling (also used in footer)*/
+a.orange-link {
+    color: #f0ad4e;
+    transition: ease 0.3s;
+    text-shadow: 2px 2px black;
+}
+a.orange-link:hover {
+    color:#C0C6C9;
+    text-decoration: underline dashed #C0C6C9;
+    text-shadow: 2px 2px #1a1a1a;
+    transition: ease 0.3s;
+}
+/* Landing Hero Caption Styling */
+.display-4 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+@include media-breakpoint-up(md) {
+    .display-4 {
+        font-size: 3.5rem;
+        font-weight: 300;
+        line-height: 1.2;
+    }
+  }
+/* Books Page Custom Styling */
+.line-height-high {
+    line-height: 1.5rem;
+}
+.text-light {
+    color: #dee0e2;
+}
+.text-muted {
+   color:#C0C6C9
+}
+a.buy-link:hover{
+    color:#ff0000;
+}
+/* Contact Page Custom Styling/forms */
+input {
+    width: 80%;
+    background-color: #1a1a1a;
+    border-color:#f0ad4e;
+    padding: 10px;
+    color: #C0C6C9;
+    font-size: large;
+}
+textarea {
+    width: 80%;
+    background-color: #1a1a1a;
+    border-color: #f0ad4e;
+    padding: 10px;
+    color: #C0C6C9;
+    font-size: large;
+}
+/*Footer Custom Styling*/
+.icon-big {
+    font-size: xx-large;
+}
+.newsletter-font {
+    font-size: x-large;
+}
+div.footer-box {
+    background-color: rgba(26, 26, 26, 75%);
+}
+a.footer-link {
+    color:#C0C6C9;
+    transition: ease 0.3s;
+    text-shadow: 2px 2px black;
+}
+a.footer-link:hover {
+    color:#f0ad4e;
+    transition: ease 0.3s;
+}

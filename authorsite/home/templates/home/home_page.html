@@ -1,0 +1,30 @@
+{% extends "base_dark.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+{% image page.background_image min-2000x400 as backgroundimg %}
+
+<div class="container-fluid row mx-0 align-items-center" style="background-image:url({{ backgroundimg.url }}); background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+    height: 80vh">
+        <div class="col-lg-4 col-sm-0">
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="w-100">
+                <blockquote class="text-light h3 md-h1 text-center mt-3 text-uppercase">
+                    {{page.caption_text|richtext}}
+                </blockquote>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 align-self-center justify-self-center text-center">
+            {% image page.book_image height-2000 as bookimg %}
+            <img src="{{bookimg.url}}" class="max-vh-60 pt-4 pb-4 px-2 mw-100 mt-2 mb-4">
+        </div>
+</div>
+
+{% endblock %}
