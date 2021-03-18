@@ -159,7 +159,7 @@ class BooksIndexPage(Page, MenuPageMixin):
         FieldPanel('intro', classname="full"),
         menupage_panel,
     ]
-    
+    subpage_types = ['books.BookPage', 'books.AuthorPage']
     def serve(self, request):
         """Custom serve method"""
         book_list = BookPage.objects.live().order_by('-sort_order')
