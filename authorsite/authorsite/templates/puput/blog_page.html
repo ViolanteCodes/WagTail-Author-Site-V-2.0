@@ -1,4 +1,4 @@
-{% extends page.template_theme %}
+<!-- Extend the base theme, light or dark. Now menus, fontawesome, bootstrap, etc. are included. -->
 {% load static wagtailuserbar %}
  <!-- Load the tag library -->
 {% load bootstrap4 %}
@@ -7,3 +7,61 @@
 {% bootstrap_javascript jquery='full' %}
 <!-- Load Custom Filters -->
 {% load custom_filters %}
+
+{% load static i18n wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags puput_tags %}
+
+{% include page.template_theme %}
+
+
+<!-- Now include an updated version of the base puput template. -->
+{% block content %}
+<div class="container-fluid container-blog py-5 mb-5">
+    <div class="container blog-card">
+        <div class="row justify-content-center">
+            <h2 class="text-center display-4 mt-2 mb-4 text-warning">
+                {{ page.title }}
+            </h2>
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="col text-center">
+                <div class="intro text-muted h4">{{ page.body|richtext }}</div>
+            </div>
+        </div>
+    </div>
+<!-- End top block and start form -->
+
+<div class="container-fluid container-blog py-5">
+     <div class="row justify-content-center">
+        {% block blog_content %}
+            {% with per_page=blog_page.num_entries_page %}
+                {# 'paginate' tag cannot render dotted variables, so we need to create a context var #}
+                {% paginate per_page entries %}
+                {% for entry in entries %}
+                    {% entry_url entry blog_page as post_url %}
+                    <article class="card blog-card page-content blog_grid px-4 py-4 mx-3 my-3 col-10">
+                        {% include 'puput/entry_page_header.html' %}
+                        <section>
+                            {% include 'puput/entry_links.html' %}
+                        </section>
+                        <section class="article blog-text">
+                            {% if entry.excerpt %}
+                                {{ entry.excerpt|richtext }}
+                            {% else %}
+                                {{ entry.body|richtext|truncatewords_html:70 }}
+                            {% endif %}
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <a class="blog_btn continue" href="{{ post_url }}">{% trans 'Continue reading' %} &raquo;</a>
+                                </div>
+                            </div>
+                        </section>
+                    </article>
+                {% endfor %}
+                <div class="pagination">
+                    {% show_paginator %}
+                </div>
+            {% endwith %}
+        {% endblock blog_content %}
+    </div>
+</div>
+{% endblock content %}

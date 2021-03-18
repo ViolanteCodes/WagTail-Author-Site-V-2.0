@@ -10,13 +10,13 @@ class MyBlogAbstract(BlogAbstract):
     # Template choices change the template that will be extended. Template
     # path/name goes in left side of tuple, human readable name on right!
     TEMPLATE_CHOICES = [
-        ('base_dark.html', 'Dark Theme'),
-        ('Light_Theme', 'Light Theme')
+        ('base_dark.html', 'Dark'),
+        ('Light_Theme', 'Light')
     ]
     template_theme = models.CharField(
         max_length = 250,
         choices = TEMPLATE_CHOICES,
-        default = 'Dark_Theme', 
+        default = 'Dark', 
         help_text = """
         Choose dark theme to match main site and light theme
         to match light site."""
@@ -38,7 +38,7 @@ class MyBlogAbstract(BlogAbstract):
             FieldPanel('instagram_url'),
             FieldPanel('pinterest_url'),
         ], heading=_("Socials"))]
-
+    
     class Meta:
         abstract = True
 

@@ -9,6 +9,7 @@ body.template-homepage{
 div.container-dark {
     background-color: #141414;
 }
+
 /* Landing Hero Image Styling */
 div.max-vh-75 {
     max-height: 75vh;
@@ -89,4 +90,23 @@ a.footer-link {
 a.footer-link:hover {
     color:#f0ad4e;
     transition: ease 0.3s;
+}
+/* Custom Blog Specific Classes */
+div.container-blog {
+    background-color: #141414;
+}
+h2.post_title a{
+    color: #f0ad4e;
+    transition: ease 0.3s;
+}
+h2.post_title a:hover{
+    color:#C0C6C9;
+    transition:ease 0.3s;
+    text-decoration: none;
+}
+article.blog-card {
+    background-color: #1a1a1a;
+}
+section.article.blog-text p {
+    color:#dee0e2;
 }

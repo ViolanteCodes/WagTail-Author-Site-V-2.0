@@ -1,0 +1,113 @@
+{% load static i18n wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags wagtailuserbar puput_tags %}
+{% load static wagtailuserbar wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags puput_tags %}
+ <!-- Load the tag library -->
+{% load bootstrap4 %}
+<!-- Load CSS and JavaScript -->
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+<!-- Load Custom Filters -->
+{% load custom_filters %}
+
+<div class="container container-blog">
+    <div class="row">
+        <div class="col-sm-8 col-md-9">
+            {% block blog_content %}
+            HA HA
+                {% with per_page=blog_page.num_entries_page %}
+                    {# 'paginate' tag cannot render dotted variables, so we need to create a context var #}
+                    {% paginate per_page entries %}
+                    {% if search_term %}
+                        <div class="searchTerm">{% trans 'Entries for' %} {{ search_type }} "{{ search_term }}"</div>
+                    {% endif %}
+                    {% for entry in entries %}
+                        {% entry_url entry blog_page as post_url %}
+                        <article class="box page-content blog_grid">
+                            {% include 'puput/entry_page_header.html' %}
+                            <section>
+                                {% include 'puput/entry_links.html' %}
+                            </section>
+                            <section class="article">
+                                {% if entry.excerpt %}
+                                    {{ entry.excerpt|richtext }}
+                                {% else %}
+                                    {{ entry.body|richtext|truncatewords_html:70 }}
+                                {% endif %}
+                                <div class="row">
+                                    <ul class="social-share col-md-9">
+                                        <li class="social-item">
+                                           {% post_to_facebook post_url '<span><i class="fa fa-facebook"></i></span>' %}
+                                        </li>
+                                        <li class="social-item">
+                                            {% post_to_twitter entry.title post_url '<span><i class="fa fa-twitter"></i></span>' %}
+                                        </li>
+                                        <li class="social-item">
+                                            {% post_to_linkendin post_url '<span><i class="fa fa-linkedin"></i></span>' %}
+                                        </li>
+                                    </ul>
+                                    <div class="col-md-3">
+                                        <a class="blog_btn continue" href="{{ post_url }}">{% trans 'Continue reading' %} &raquo;</a>
+                                    </div>
+                                </div>
+                            </section>
+                        </article>
+                    {% endfor %}
+                    <div class="pagination">
+                        {% show_paginator %}
+                    </div>
+                {% endwith %}
+            {% endblock blog_content %}
+
+            {% block blog_extra_content %}
+            {% endblock blog_extra_content %}
+        </div>
+
+        <div class="col-sm-4 col-md-3">
+            <div class="blog_sidebar">
+                <div class="rss-sitemap">
+                    <a href="{% feeds_url blog_page %}" target="_blank" title="RSS">
+                         <i class="fa fa-rss-square"></i> <span>{% trans 'Feed RSS' %}</span>
+                    </a>
+                </div>
+                <form name="search_form" class="search_form" method="get" action="{% routablepageurl blog_page 'entries_search' %}">
+                    <div class="input-group">
+                         <input type="search" name="q" placeholder="{% trans 'Search' %}">
+                         <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                         </span>
+                    </div>
+                </form>
+
+                {% if blog_page.display_last_entries %}
+                    <ul class="sidebar">
+                        <h4>{% trans 'Last Entries' %}</h4>
+                        {% recent_entries blog_page.num_last_entries %}
+                    </ul>
+                {% endif %}
+                {% if blog_page.display_popular_entries %}
+                    <ul class="sidebar">
+                        <h4>{% trans 'Popular Entries' %}</h4>
+                        {% popular_entries blog_page.num_popular_entries %}
+                    </ul>
+                {% endif %}
+                {% if blog_page.display_categories %}
+                    <ul class="sidebar">
+                        <h4>{% trans 'Categories' %}</h4>
+                        {% categories_list %}
+                    </ul>
+                {% endif %}
+                {% if blog_page.display_tags %}
+                    <ul class="sidebar">
+                        <h4>{% trans 'Tags' %}</h4>
+                        {% tags_list %}
+                    </ul>
+                {% endif %}
+                {% if blog_page.display_archive %}
+                    <ul class="sidebar widget menu">
+                        <h4>{% trans 'Archive' %}</h4>
+                        {% archives_list %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
