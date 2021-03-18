@@ -110,3 +110,25 @@ article.blog-card {
 section.article.blog-text p {
     color:#dee0e2;
 }
+i.blog-icon {
+    color: #C0C6C9;
+}
+a.blog-link {
+    color: #f0ad4e;
+    transition: ease 0.3s;
+}
+a.blog-link:hover {
+    color:#C0C6C9;
+    transition:ease 0.3s;
+    text-decoration: dashed;
+}
+.blog-text {
+    color:#C0C6C9;
+}
+li.tag a{
+    color: #f0ad4e;
+    transition: ease 0.3s;
+}
+li.tag a:hover{
+    color: #C0C6C9;
+}
