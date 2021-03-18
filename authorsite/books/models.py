@@ -51,7 +51,7 @@ class AuthorPage(Page):
         ImageChooserPanel('author_photo'),
     ]
     # Parent page / subpage type rules
-    parent_page_types = ['books.BooksIndexPage']
+    parent_page_types = ['home.HomePage']
 
 class SeriesPage(Page):
     """A page to represent a book series."""
@@ -139,14 +139,12 @@ class BookPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('book_title', classname="full"),
         PageChooserPanel('author', 'books.AuthorPage'),
-        PageChooserPanel('series', 'books.SeriesPage'),
         FieldPanel('release_date'),
         FieldPanel('genre'),
         FieldPanel('description', classname="full"),
         ImageChooserPanel('cover_image'),
         FieldPanel('sort_order'),
         FieldPanel('content_warnings'),
-        FieldPanel('other_text'),
         InlinePanel('buy_links', label="Buy Links"),
         InlinePanel('book_reviews', label="Book Reviews"),
     ]
