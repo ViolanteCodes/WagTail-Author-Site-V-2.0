@@ -275,5 +275,6 @@ BOOTSTRAP4 = {
 
 # Required at very bottom to use PUPUT blog as plugin
 PUPUT_BLOG_MODEL = 'customblog.models.MyBlogAbstract'
+PUPUT_ENTRY_MODEL = 'customblog.models.CustomEntryAbstract'
 MIGRATION_MODULES = {'puput': 'customblog.puput_migrations'}
 PUPUT_AS_PLUGIN = True

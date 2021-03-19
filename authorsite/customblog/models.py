@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
-from puput.abstracts import BlogAbstract
+from puput.abstracts import BlogAbstract, EntryAbstract
 
 class MyBlogAbstract(BlogAbstract):
     """Puput Base Blog Abstract model, extended to allow for custom methods
@@ -11,7 +11,7 @@ class MyBlogAbstract(BlogAbstract):
     # path/name goes in left side of tuple, human readable name on right!
     TEMPLATE_CHOICES = [
         ('base_dark.html', 'Dark'),
-        ('Light_Theme', 'Light')
+        ('base_light.html', 'Light')
     ]
     template_theme = models.CharField(
         max_length = 250,
@@ -39,6 +39,8 @@ class MyBlogAbstract(BlogAbstract):
             FieldPanel('pinterest_url'),
         ], heading=_("Socials"))]
     
+    subpage_types = ['customblog.custom_entry.CustomEntryPage']
+
     class Meta:
         abstract = True
 
@@ -49,5 +51,34 @@ class MyBlogAbstract(BlogAbstract):
         context['search_type'] = getattr(self, 'search_type', "")
         context['search_term'] = getattr(self, 'search_term', "")
         # Get template_theme from model and pass to context as 'template_theme'
+        context['template_theme'] = self.template_theme
+        return context
+
+class CustomEntryAbstract(EntryAbstract):
+    """Puput Base Entry Abstract model, extended to allow for custom methods
+    and template choices."""
+    TEMPLATE_CHOICES = [
+        ('base_dark.html', 'Dark'),
+        ('base_light.html', 'Light')
+    ]
+    template_theme = models.CharField(
+        max_length = 250,
+        choices = TEMPLATE_CHOICES,
+        default = 'Dark', 
+        help_text = """
+        Choose dark theme to match main site and light theme
+        to match light site."""
+    )
+
+    content_panels = EntryAbstract.content_panels + [
+        FieldPanel('template_theme'),
+    ]
+
+    class Meta:
+        abstract = True
+
+    def get_context(self, request, *args, **kwargs):
+        context = super(CustomEntryAbstract, self).get_context(request, *args, **kwargs)
+        context['blog_page'] = self.blog_page
         context['template_theme'] = self.template_theme
         return context
