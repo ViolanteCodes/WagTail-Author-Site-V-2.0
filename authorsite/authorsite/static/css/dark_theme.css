@@ -107,6 +107,9 @@ h2.post_title a:hover{
 article.blog-card {
     background-color: #1a1a1a;
 }
+.blog-card {
+    background-color: #1a1a1a;
+}
 section.article.blog-text p {
     color:#dee0e2;
 }
