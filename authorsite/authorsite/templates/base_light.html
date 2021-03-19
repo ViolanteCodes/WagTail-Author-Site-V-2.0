@@ -1,0 +1,52 @@
+{% load static wagtailuserbar wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags puput_tags %}
+ <!-- Load the tag library -->
+{% load bootstrap4 %}
+<!-- Load CSS and JavaScript -->
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+<!-- Load Custom Filters -->
+{% load custom_filters %}
+
+{% load static i18n wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags wagtailuserbar puput_tags %}
+{% load static wagtailuserbar wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags puput_tags %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>
+            {% block title %}
+                {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+            {% endblock %}
+            {% block title_suffix %}
+                {% with self.get_site.site_name as site_name %}
+                    {% if site_name %}- {{ site_name }}{% endif %}
+                {% endwith %}
+            {% endblock %}
+        </title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {# Global stylesheets #}
+        <!-- Get Font Awesome URL from .env file with custom tag -->
+        <script src="{% get_font_awesome_url %}"></script>
+
+        {% block extra_css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/light_theme.css' %}">
+        {% endblock %}
+    </head>
+
+    <body class="{% block body_class %}{% endblock %}">
+        {% load menu_tags %}
+        {% main_menu max_levels=3 add_sub_menus_inline=True template="menus/custom_main_menu.html" %}
+
+        {% block content %}{% endblock %}
+        {% block footer %}
+            {% include 'light_footer.html' %}
+        {%endblock %}
+        {% block extra_js %}
+            {# Override this in templates to add extra javascript #}
+        {% endblock %}
+    </body>
+</html>
