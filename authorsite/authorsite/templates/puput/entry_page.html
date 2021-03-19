@@ -14,123 +14,79 @@
 {% include page.template_theme %}
 
 {% block content %}
-
-{% block blog_header %}
+<!-- Main Container For Page/Background Color -->
 <div class="container-fluid container-blog py-5 mb-5">
-    <div class="row container-fluid justify-content-center text-center">
-        <div class="container about card blog-card justify-content-center">
-            {% if blog_page.header_image %}
-                <span class="image featured">
-                    {% image blog_page.header_image fill-1500x120 as header_image %}
-                    <img alt="{{ blog_page.header_image.title }}" src="{{ header_image.url }}">
-                </span>
-            {% endif %}
-            <div class="container text-center">
-                <section class="{% if blog_page.header_image %}title-section-image{% else %}title-section{% endif %} text-center">
+<!-- Contrasting Content Area -->
+    <div class="container blog-card">
+        <!-- Blog Header - From parent blog page-->
+        {% block blog_header %}
+        <div class="row container-fluid justify-content-center text-center py-5">
+            <div class="container about card blog-card justify-content-center">
+                <section class="title-section text-center">
                     <h1 class="title-header">
                         <a href="{% pageurl blog_page %}" class="blog-link">{{ blog_page.title }}</a>
                     </h1>
-                    {% if not blog_page.header_image %}
                         <h2 class="intro text-muted h4 text-center">{{ blog_page.description }}</h2>
-                    {% endif %}
                 </section>
             </div>
         </div>
-    </div>
-{% endblock blog_header %}
-<div class="container container-blog">
-    <div class="row">
-        <div class="col-sm-8 col-md-9 card blog-card">
-            {% block blog_content %}
-            <article class="box page-content"
-            {% if self.id %}data-entry-page-update-comments-url="{% url 'entry_page_update_comments' self.id %}{% endif %}">
-       {% include 'puput/entry_page_header.html' with entry=self %}
-       <section>
-           {% if self.header_image %}
-               <span class="image featured">
-                   {% image self.header_image fill-800x450 as header_image %}
-                   <img alt="{{ self.header_image.title }}" src="{{ header_image.url }}">
-               </span>
-           {% endif %}
-           {% include 'puput/entry_links.html' with entry=self %}
-       </section>
-       <section>
-           {{ self.body|richtext}}
-           <div class="row">
-               <div class="col-md-2">
-                   <a href="{% pageurl blog_page %}" class="blog_btn back">
-                       <i class="fa fa-angle-left"></i> {% trans 'Return' %}
-                   </a>
-               </div>
-               {% entry_url self blog_page as post_url %}
-               <ul class="social-share-all text-right col-md-10">
-                   <li class="social-item">
-                      {% post_to_facebook post_url '<span><i class="fa fa-facebook"></i></span>' %}
-                   </li>
-                   <li class="social-item">
-                       {% post_to_twitter self.title post_url '<span><i class="fa fa-twitter"></i></span>' %}
-                   </li>
-                   <li class="social-item">
-                       {% post_to_linkendin post_url '<span><i class="fa fa-linkedin"></i></span>' %}
-                   </li>
-               </ul>
-           </div>
+        {% endblock blog_header %}
 
-       </section>
-       {% show_comments %}
-   </article>
-            
-            {% endblock blog_content %}
-            {% block extra_content %}
-            {% if self.has_related %}
-            {% include 'puput/related_entries.html' with entry=self %}
-            {% endif %}
-            {% endblock extra_content %}
-        </div>
-
-        <div class="col-sm-4 col-md-3">
-            <div class="blog_sidebar blog">
-                <div class="rss-sitemap">
-                    <a href="{% feeds_url blog_page %}" target="_blank" title="RSS">
-                         <i class="fa fa-rss-square"></i> <span>{% trans 'Feed RSS' %}</span>
-                    </a>
-                </div>
-                <form name="search_form" class="search_form" method="get" action="{% routablepageurl blog_page 'entries_search' %}">
-                    <div class="input-group">
-                         <input type="search" name="q" placeholder="{% trans 'Search' %}">
-                         <span class="input-group-btn">
-                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-                         </span>
-                    </div>
-                </form>
-
-                {% if blog_page.display_last_entries %}
-                    <ul class="sidebar">
-                        <h4>{% trans 'Last Entries' %}</h4>
-                        {% recent_entries blog_page.num_last_entries %}
-                    </ul>
-                {% endif %}
-                {% if blog_page.display_popular_entries %}
-                    <ul class="sidebar">
-                        <h4>{% trans 'Popular Entries' %}</h4>
-                        {% popular_entries blog_page.num_popular_entries %}
-                    </ul>
-                {% endif %}
-                {% if blog_page.display_tags %}
-                    <ul class="sidebar">
-                        <h4>{% trans 'Tags' %}</h4>
-                        {% tags_list %}
-                    </ul>
-                {% endif %}
-                {% if blog_page.display_archive %}
-                    <ul class="sidebar widget menu">
-                        <h4>{% trans 'Archive' %}</h4>
-                        {% archives_list %}
-                    </ul>
-                {% endif %}
+        <!-- Entry Page Content -->
+        <div class="row">
+            <div class="col-12 card blog-card mb-4">
+                {% block blog_content %}
+                <article class="box page-content"
+                {% if self.id %}data-entry-page-update-comments-url="{% url 'entry_page_update_comments' self.id %}{% endif %}">
+                {% if self.header_image %}
+                        <div class="row justify-content-center">                   
+                            <col class="image featured col-12 sm-col-8 lg-col-6 xl-col-4 ">
+                                {% image self.header_image fill-800x450 as header_image %}
+                                <img alt="{{ self.header_image.title }}" src="{{ header_image.url }}" class="text-center img-fluid">
+                            </span>
+                        </div>
+                        {% endif %}    
+                {% include 'puput/entry_page_header.html' with entry=self %}
+                    <section class="mt-4 mx-4 pt-4">
+                    {{ self.body|richtext}}
+                        <div class="row justify-content-center">
+                            <div class="col text-center">
+                                <a href="{% pageurl blog_page %}" class="blog_btn back blog-link">
+                                    <i class="fa fa-angle-left"></i> {% trans 'Return' %}
+                                </a>
+                            </div>
+                            {% entry_url self blog_page as post_url %}
+                            <div class="col text-center">
+                                <div class="row justify-content-center">
+                                    {% post_to_facebook post_url '<span><i class="fa fa-facebook blog-icon mx-1 blog-link"></i></span>' %}
+                                    {% post_to_twitter self.title post_url '<span><i class="fa fa-twitter blog-icon mx-1"></i></span>' %}
+                                </div>
+                            </div>
+                            <div class="rss-sitemap col text-center">
+                                <a href="{% feeds_url blog_page %}" target="_blank" title="RSS" class="blog-link">
+                                    <i class="fa fa-rss-square"></i> <span>{% trans 'Feed RSS' %}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+                {% endblock blog_content %}
             </div>
         </div>
+        <!-- Bottom Bar
+        <div class="row blog_sidebar blog mt-4 justify-content-center">
+            <div class="col-12 col-md-6">
+                {% include 'puput/entry_links.html' with entry=self %}
+            </div>
+            <form name="search_form" class="search_form justify-content-center col-12 col-md-6" method="get" action="{% routablepageurl blog_page 'entries_search' %}">
+                <div class="input-group text-center mt-4">
+                    <input type="search" name="q" placeholder="{% trans 'Search' %}">
+                    <span class="input-group-btn col-1">
+                        <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </form>
+        </div> -->
     </div>
-</div>
 </div>
 {% endblock content %}

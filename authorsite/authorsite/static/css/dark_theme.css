@@ -109,6 +109,7 @@ article.blog-card {
 }
 .blog-card {
     background-color: #1a1a1a;
+    outline: none;
 }
 section.article.blog-text p {
     color:#dee0e2;
@@ -125,13 +126,30 @@ a.blog-link:hover {
     transition:ease 0.3s;
     text-decoration: dashed;
 }
+div.blog-link a{
+    color: #f0ad4e;
+    transition: ease 0.3s;
+}
+div.blog-link ul {
+    list-style-type: none;
+    color: #C0C6C9
+}
+div.blog-link h4 {
+    color: #f0ad4e;
+}
 .blog-text {
     color:#C0C6C9;
+}
+ul li.tag::marker{
+    display: none;
 }
 li.tag a{
     color: #f0ad4e;
     transition: ease 0.3s;
 }
 li.tag a:hover{
+    color: #C0C6C9;
+}
+.page-content p{
     color: #C0C6C9;
 }
