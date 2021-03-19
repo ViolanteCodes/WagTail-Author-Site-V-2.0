@@ -18,20 +18,20 @@
 {% block blog_header %}
 <div class="container-fluid container-blog py-5 mb-5">
     <div class="row container-fluid justify-content-center text-center">
-        <div class="container about card blog-card text-center">
+        <div class="container about card blog-card justify-content-center">
             {% if blog_page.header_image %}
                 <span class="image featured">
                     {% image blog_page.header_image fill-1500x120 as header_image %}
                     <img alt="{{ blog_page.header_image.title }}" src="{{ header_image.url }}">
                 </span>
             {% endif %}
-            <div class="container">
-                <section class="{% if blog_page.header_image %}title-section-image{% else %}title-section{% endif %}">
+            <div class="container text-center">
+                <section class="{% if blog_page.header_image %}title-section-image{% else %}title-section{% endif %} text-center">
                     <h1 class="title-header">
                         <a href="{% pageurl blog_page %}" class="blog-link">{{ blog_page.title }}</a>
                     </h1>
                     {% if not blog_page.header_image %}
-                        <h2 class="intro text-muted h4">{{ blog_page.description }}</h2>
+                        <h2 class="intro text-muted h4 text-center">{{ blog_page.description }}</h2>
                     {% endif %}
                 </section>
             </div>
@@ -89,7 +89,7 @@
         </div>
 
         <div class="col-sm-4 col-md-3">
-            <div class="blog_sidebar">
+            <div class="blog_sidebar blog">
                 <div class="rss-sitemap">
                     <a href="{% feeds_url blog_page %}" target="_blank" title="RSS">
                          <i class="fa fa-rss-square"></i> <span>{% trans 'Feed RSS' %}</span>
