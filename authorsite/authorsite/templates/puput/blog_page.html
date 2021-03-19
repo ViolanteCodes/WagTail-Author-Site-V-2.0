@@ -30,7 +30,7 @@
     </div>
 <!-- End top block and start form -->
 
-<div class="container-fluid container-blog py-5">
+<div class="container-fluid container-blog py-3">
      <div class="row justify-content-center">
         {% block blog_content %}
             {% with per_page=blog_page.num_entries_page %}
@@ -38,12 +38,12 @@
                 {% paginate per_page entries %}
                 {% for entry in entries %}
                     {% entry_url entry blog_page as post_url %}
-                    <article class="card blog-card page-content blog_grid px-4 py-4 mx-3 my-3 col-10">
+                    <article class="card blog-card page-content blog_grid px-4 py-2 mx-3 my-3 col-10">
                         {% include 'puput/entry_page_header.html' %}
                         <section>
                             {% include 'puput/entry_links.html' %}
                         </section>
-                        <section class="article blog-text">
+                        <section class="article blog-text px-2">
                             {% if entry.excerpt %}
                                 {{ entry.excerpt|richtext }}
                             {% else %}
