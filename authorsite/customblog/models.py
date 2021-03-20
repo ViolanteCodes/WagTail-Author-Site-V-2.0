@@ -38,7 +38,8 @@ class MyBlogAbstract(BlogAbstract):
             FieldPanel('instagram_url'),
             FieldPanel('pinterest_url'),
         ], heading=_("Socials"))]
-    
+
+    parent_page_types = ['home.HomePage', 'home.FanSiteHomePage']
     subpage_types = ['customblog.custom_entry.CustomEntryPage']
 
     class Meta:
