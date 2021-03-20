@@ -12,8 +12,21 @@ from wagtail.admin.edit_handlers import FieldPanel
 class ContactPage(Page):
     """A custom contact page with contact form."""
     body = RichTextField(blank=True)
+    TEMPLATE_CHOICES = [
+        ('base_dark.html', 'Dark'),
+        ('base_light.html', 'Light')
+    ]
+    template_theme = models.CharField(
+        max_length = 250,
+        choices = TEMPLATE_CHOICES,
+        default = 'Dark', 
+        help_text = """
+        Choose dark theme to match main site and light theme
+        to match light site."""
+    )
     content_panels = Page.content_panels + [
-        FieldPanel('body', classname="full")
+        FieldPanel('body', classname="full"),
+        FieldPanel('template_theme'),
     ]
 
     def serve(self, request):
@@ -43,5 +56,6 @@ class ContactPage(Page):
         return render(request, 'contact/contact_page.html', {
             'page':self,
             'form':form,
+            'template_theme':self.template_theme,
         })
 

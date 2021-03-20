@@ -1,19 +1,12 @@
 {% load wagtailcore_tags %}
 <!-- Start Rendering Footer -->
-<div class="container-fluid footer-box text-light fixed-bottom pl-1 py-2">
-    <div class="row justify-content-between align-items-center">
-        <div class="col text-left d-none d-md-inline">
-            <a href="{{ settings.home.SocialMediaSettings.twitter }}" class="footer-link" target="__blank">
-                <i class="fa fa-twitter px-2 icon-big" aria-label="twitter-icon"></i></a>
-            <a href="{{ settings.home.SocialMediaSettings.facebook }}" class="footer-link" target="__blank">
-                <i class="fa fa-facebook-square px-2 icon-big" aria-label="facebook-icon"></i></a>
-            <a href="{{ settings.home.SocialMediaSettings.instagram }}" class="footer-link" target="__blank">
-                    <i class="fa fa-instagram px-2 icon-big" aria-label="instagram-icon"></i></a>
-            <a href="{% slugurl 'contact' %}" class="footer-link" target="__blank">
-                <i class="fa fa-envelope px-2 icon-big" aria-label="twitter-icon"></i></a>
-        </div>
-        <div class="col-auto text-center md-12 mx-auto">
-            <a class="btn btn-outline-warning p-2 newsletter-font text-uppercase" href="{% slugurl 'newsletter' %}" role="button">Get Newsletter</a>
+<div class="container-fluid footer-box fixed-bottom shadow">
+    <div class="row justify-content-between align-items-center shadow btn-outline-secondary">
+        <div class="col-12 text-center pt-3">
+            <p>
+            <a class="bold" href="www.jacrawford.net" target="_blank">Jove Brand is the star of the fictional JOVE BRAND films, as seen in the novel JOVE
+                BRAND IS NEAR DEATH by author JA Crawford.</a>
+            </p>
         </div>
     </div>
 </div>
