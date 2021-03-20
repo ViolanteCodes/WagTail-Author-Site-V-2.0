@@ -1,6 +1,9 @@
 {% extends "base_dark.html" %}
 {% load wagtailcore_tags wagtailimages_tags static%}
 {% block body_class %}template-homepage{% endblock %}
+<!-- Cancel out header block -->
+{% block header %}
+{% endblock %}
 {% block content %}
 <div class="container-fluid container-dark py-5">
     <div class="container">
