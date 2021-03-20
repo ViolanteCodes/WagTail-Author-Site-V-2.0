@@ -179,6 +179,7 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 # Wagtail settings
 WAGTAIL_SITE_NAME = config('WAGTAIL_SITE_NAME')
+WAGTAIL_FANSITE_NAME = config('WAGTAIL_FANSITE_NAME')
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash

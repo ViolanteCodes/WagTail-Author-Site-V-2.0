@@ -13,6 +13,12 @@ def get_site_name():
     return site_name
 
 @register.simple_tag
+def get_fansite_name():
+    """Simple tag to pull fansite name from settings."""
+    fansite_name = settings.WAGTAIL_FANSITE_NAME
+    return fansite_name
+
+@register.simple_tag
 def get_font_awesome_url():
     """Simple tag to pull fontawesome url from settings."""
     font_awesome_url = settings.FONT_AWESOME_URL
