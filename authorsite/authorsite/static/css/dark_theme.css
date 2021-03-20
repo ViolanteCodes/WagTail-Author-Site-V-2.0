@@ -6,6 +6,9 @@ body.template-homepage{
     background-color: #141414;
     color:#dee0e2;
 }
+body {
+    background-color: #141414;
+}
 div.container-dark {
     background-color: #141414;
 }
