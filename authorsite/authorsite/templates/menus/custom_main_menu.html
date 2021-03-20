@@ -6,10 +6,10 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarColor01">
-    <div class="navbar-nav row container-fluid justify-content-between mx-4">
+    <div class="navbar-nav row container-fluid justify-content-between ml-4">
       {% for item in menu_items %}
       {% if item.sub_menu %}
-      <div class="nav-item dropdown ml-4">
+      <div class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-light h4 menu-link" data-toggle="dropdown" 
           href="{{ item.href }}" role="button" aria-haspopup="true" aria-expanded="false">{{ item.text }}</a>
         <div class="dropdown-menu bg-primary text-light">
@@ -19,7 +19,7 @@
         </div>
       </div>
       {% else %}
-      <div class="nav-item ml-4">
+      <div class="nav-item">
         <a class="nav-link h4 text-light menu-link" href="{{item.href}}">{{item.text}}</a>
       </div>
       {% endif %}
