@@ -4,6 +4,14 @@
 
 {% block body_class %}template-homepage{% endblock %}
 
+<!-- Cancel out startoutercontainerblock -->
+{% block startoutercontainer %}
+{% endblock %}
+
+<!-- Cancel out header block -->
+{% block header %}
+{% endblock %}
+
 {% block content %}
 {% image page.background_image min-2000x400 as backgroundimg %}
 
@@ -26,5 +34,7 @@
             <img src="{{bookimg.url}}" class="max-vh-60 pt-4 pb-4 px-2 mw-100 mt-2 mb-4">
         </div>
 </div>
-
+{% endblock %}
+<!-- Cancel out block endoutercontainer -->
+{% block closeoutercontainer %}
 {% endblock %}
