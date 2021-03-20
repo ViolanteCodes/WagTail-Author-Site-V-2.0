@@ -165,3 +165,5 @@ class BooksIndexPage(Page, MenuPageMixin):
             'page':self,
             'book_list':book_list
         })
+
+    parent_page_types = ['home.HomePage']

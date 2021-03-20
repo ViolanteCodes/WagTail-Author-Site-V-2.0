@@ -50,6 +50,8 @@ class FanSiteHomePage(Page):
         FieldPanel('n_page', classname="full"),
     ]
 
+    subpage_types = ['puput.BlogPage','contact.ContactPage', 'watchlist.MovieIndexPage', 'watchlist.DossierPage']
+
 @register_setting
 class SocialMediaSettings(BaseSetting):
     """Social media settings, will show up in menu."""
