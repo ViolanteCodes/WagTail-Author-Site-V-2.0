@@ -20,6 +20,36 @@ class HomePage(Page):
         FieldPanel('caption_text', classname="full"),
     ]
 
+class FanSiteHomePage(Page):
+    """FanSite HomePage"""
+    w_page = models.ForeignKey(
+        'wagtailcore.Page', on_delete=models.SET_NULL, blank=True, null=True, related_name='+', 
+        help_text="""Choose a page to assign to 'W' value.""")
+    a_page = models.ForeignKey(
+        'wagtailcore.Page', on_delete=models.SET_NULL, blank=True, null=True, related_name='+', 
+        help_text="""Choose a page to assign to 'A' value.""")
+    r_page = models.ForeignKey(
+        'wagtailcore.Page', on_delete=models.SET_NULL, blank=True, null=True, related_name='+', 
+        help_text="""Choose a page to assign to 'R' value.""")
+    d_page = models.ForeignKey(
+        'wagtailcore.Page', on_delete=models.SET_NULL, blank=True, null=True, related_name='+', 
+        help_text="""Choose a page to assign to 'D' value.""")
+    e_page = models.ForeignKey(
+        'wagtailcore.Page', on_delete=models.SET_NULL, blank=True, null=True, related_name='+', 
+        help_text="""Choose a page to assign to 'E' value.""")
+    n_page = models.ForeignKey(
+        'wagtailcore.Page', on_delete=models.SET_NULL, blank=True, null=True, related_name='+', 
+        help_text="""Choose a page to assign to 'N' value.""")
+
+    content_panels = Page.content_panels + [
+        FieldPanel('w_page', classname="full"),
+        FieldPanel('a_page', classname="full"),
+        FieldPanel('r_page', classname="full"),
+        FieldPanel('d_page', classname="full"),
+        FieldPanel('e_page', classname="full"),
+        FieldPanel('n_page', classname="full"),
+    ]
+
 @register_setting
 class SocialMediaSettings(BaseSetting):
     """Social media settings, will show up in menu."""
