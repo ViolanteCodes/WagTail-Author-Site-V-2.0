@@ -1,3 +1,5 @@
+{% extends page.template_theme %}
+
 {% load i18n wagtailcore_tags wagtailimages_tags puput_tags social_share %}
 {% load static i18n wagtailimages_tags wagtailroutablepage_tags wagtailuserbar puput_tags %}
 
@@ -11,22 +13,22 @@
 <!-- Load Custom Filters -->
 {% load custom_filters %}
 
-{% include page.template_theme %}
+{% block header %}{% endblock %}
 
 {% block content %}
 <!-- Main Container For Page/Background Color -->
 <div class="container-fluid container-blog py-5 mb-5">
 <!-- Contrasting Content Area -->
-    <div class="container blog-card">
+    <div class="container">
         <!-- Blog Header - From parent blog page-->
         {% block blog_header %}
-        <div class="row container-fluid justify-content-center text-center py-5">
-            <div class="container about card blog-card justify-content-center">
+        <div class="row container-fluid justify-content-center text-center mb-5">
+            <div class="container about justify-content-center">
                 <section class="title-section text-center">
-                    <h1 class="title-header">
+                    <h1 class="title-header py-5">
                         <a href="{% pageurl blog_page %}" class="blog-link">{{ blog_page.title }}</a>
                     </h1>
-                        <h2 class="intro text-muted h4 text-center">{{ blog_page.description }}</h2>
+                        <h2 class="intro text-muted h4 text-center mb-5">{{ blog_page.description }}</h2>
                 </section>
             </div>
         </div>
