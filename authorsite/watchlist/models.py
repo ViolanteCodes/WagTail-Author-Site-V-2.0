@@ -57,6 +57,12 @@ class ActorIndexPage(Page):
 
 class MovieIndexPage(Page):
     """List of all Movies."""
+    description = RichTextField()
+
+    content_panels = Page.content_panels + [
+            FieldPanel('description', classname="full"),
+        ]
+
     parent_page_types = ['home.FanSiteHomePage']
     subpage_types = ['watchlist.MoviePage']
 
