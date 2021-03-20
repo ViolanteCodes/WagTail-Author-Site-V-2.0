@@ -48,12 +48,32 @@
         {% load menu_tags %}
         {% main_menu max_levels=3 add_sub_menus_inline=True template="menus/custom_main_menu.html" %}
 
-        {% block content %}{% endblock %}
+    <!-- Outer Container -->
+    <div class="container-fluid container-dark py-5 mb-5 shadow">
+    <!-- Header Block -->
+        {% block header %}
+            <div class="container card bg-primary">
+                <div class="row justify-content-center">
+                    <h1 class="text-center display-5 text-warning mt-2 mb-4">
+                        {{ page.title }}
+                    </h1>
+                </div>
+                <div class="row justify-content-center mt-4">
+                    <div class="col text-center">
+                        <div class="intro text-muted h4">{{ page.body|richtext }}</div>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+        {% block content %}
+        {% endblock %}
         {% block footer %}
             {% include 'dark_footer.html' %}
         {%endblock %}
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
         {% endblock %}
+    <!-- Close Outer container -->
+    </div>
     </body>
 </html>

@@ -3,20 +3,6 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-<div class="container-fluid container-dark py-5 mb-5 shadow">
-    <div class="container card bg-primary">
-        <div class="row justify-content-center">
-            <h1 class="text-center display-5 mt-2 mb-4 text-warning">
-                {{ page.title }}
-            </h1>
-        </div>
-        <div class="row justify-content-center mt-4">
-            <div class="col text-center">
-                <div class="intro text-muted h4">{{ page.body|richtext }}</div>
-            </div>
-        </div>
-    </div>
-<!-- End top block and start form -->
     <div class="container card bg-primary mt-5 shadow">
         <form method="post">
         {% csrf_token %}
@@ -52,5 +38,4 @@
         </div>
         </form>
     </div>
-</div>
 {% endblock %}
