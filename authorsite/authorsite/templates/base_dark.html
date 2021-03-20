@@ -52,17 +52,31 @@
     <div class="container-fluid container-dark py-5 mb-5 shadow">
     <!-- Header Block -->
         {% block header %}
-            <div class="container card bg-primary">
+            <div class="container">
                 <div class="row justify-content-center">
                     <h1 class="text-center display-5 text-warning mt-2 mb-4">
                         {{ page.title }}
                     </h1>
                 </div>
+                {% if page.intro %}
+                <div class="row justify-content-center mt-4">
+                    <div class="col text-center">
+                        <div class="intro text-muted h4">{{ page.intro|richtext }}</div>
+                    </div>
+                </div>
+                {% elif page.description %}
+                <div class="row justify-content-center mt-4">
+                    <div class="col text-center">
+                        <div class="intro text-muted h4">{{ page.intro|richtext }}</div>
+                    </div>
+                </div>
+                {% else %}
                 <div class="row justify-content-center mt-4">
                     <div class="col text-center">
                         <div class="intro text-muted h4">{{ page.body|richtext }}</div>
                     </div>
                 </div>
+                {% endif %}
             </div>
         {% endblock %}
         {% block content %}
