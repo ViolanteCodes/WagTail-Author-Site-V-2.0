@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'contact',
     'customblog',
     'books',
+    'watchlist',
     'wagtail.contrib.modeladmin',
     'wagtailmenus',
     'wagtail.contrib.settings',
