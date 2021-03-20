@@ -48,8 +48,10 @@
         {% load menu_tags %}
         {% main_menu max_levels=3 add_sub_menus_inline=True template="menus/custom_main_menu.html" %}
 
+    {% block startoutercontainer %}
     <!-- Outer Container -->
     <div class="container-fluid container-dark py-5 mb-5 shadow">
+    {% endblock %}
     <!-- Header Block -->
         {% block header %}
             <div class="container">
@@ -87,7 +89,9 @@
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
         {% endblock %}
+    {% block closeoutercontainer %}
     <!-- Close Outer container -->
+    {% endblock %}
     </div>
     </body>
 </html>
