@@ -52,6 +52,20 @@ class FanSiteHomePage(Page):
 
     subpage_types = ['puput.BlogPage','contact.ContactPage', 'watchlist.MovieIndexPage', 'watchlist.DossierPage']
 
+    def get_context(self, request):
+        """Custom context to create list of warden_pages."""
+        context = super().get_context(request)
+        # Add extra variables and return the updated context
+        context['warden_pages'] = [
+            'self.w_page',
+            'self.a_page',
+            'self.r_page',
+            'self.d_page',
+            'self.e_page',
+            'self.n_page',
+        ]
+        return context
+
 @register_setting
 class SocialMediaSettings(BaseSetting):
     """Social media settings, will show up in menu."""
