@@ -5,7 +5,7 @@
 {% block header %}
 {% endblock %}
 {% block content %}
-<div class="container-fluid container-dark py-2 py-md-5">
+<div class="container-fluid container-dark py-2 py-md-5 px-2 px-md-4">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm align-content-center order-2 order-lg-1">
@@ -31,11 +31,11 @@
                 </div>
                 <!-- If there are book reviews, show the block and style it. -->
                 {% if page.book_reviews.all %}
-                    <div id="carouselExampleControls" class="carousel carousel-fade justify-content-center mt-3 mb-5" data-ride="carousel">
+                    <div id="carouselExampleControls" class="carousel carousel-fade justify-content-center mt-1 mt-md-3 mb-1 mb-md-5" data-ride="carousel">
                         <div class="carousel-inner justify-content-center">
                             {% for review in page.book_reviews.all %}
                             <div class="carousel-item{% if forloop.counter == 1 %} active{% endif %} mt-3 align-text-top text-center">
-                                <div class="d-block card bg-primary p-5">
+                                <div class="d-block card bg-primary p-2 p-md-5">
                                     <h3 class="text-light text-center px-3">
                                         What people are saying
                                     </h3>
@@ -67,7 +67,7 @@
         <!-- Close the row -->
         </div>
         <div class="row justify-content-center">
-            <div class="col-12 card container-dark text-light text-left card-body mt-0 mb-4 px-5 h5 line-height-high">
+            <div class="col-12 card container-dark text-light text-left card-body mt-0 mb-4 px-2 px-md-5 h5 line-height-high">
                 {{page.description|richtext}}
             </div>
         </div>
