@@ -3,7 +3,7 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-    <div class="container card bg-primary mt-5 shadow">
+    <div class="container mt-5 shadow {% if page.get_template_theme_display == 'Dark' %}bg-primary{% endif %}">
         <form method="post">
         {% csrf_token %}
         {{form.errors}}
