@@ -201,3 +201,13 @@ li.tag a:hover{
 .page-content p{
     color: #C0C6C9;
 }
+/* override puput */
+a.endless_page_link {
+    color: #f0ad4e;
+}
+a.endless_page_link:hover {
+    color: #C0C6C9;
+}
+span.endless_page_current {
+    color: #C0C6C9;
+}

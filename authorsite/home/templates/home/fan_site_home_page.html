@@ -9,7 +9,7 @@
     {% for item in warden_pages %}
     <div class="row mx-2 my-1 my-sm-4
     justify-content-{% if forloop.counter|divisibleby:2 %}end{% else %}start{% endif %} justify-content-md-center">
-        <a class="col-10 col-md-3 btn btn-outline-primary" href="{% pageurl item %}">
+        <a class="col-10 col-md-3 btn btn-outline-primary" href="{% pageurl item %}" style="opacity: 80%;">
             <span class="text-warning">{{item.title|slice:":1"}}</span>{{item.title|slice:"1:"}}</a>
         </a>
         <div class="d-none d-md-inline-flex col-8 card ml-5">

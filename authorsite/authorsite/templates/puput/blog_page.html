@@ -41,11 +41,13 @@
                         </section>
                     </article>
                 {% endfor %}
-                <div class="pagination">
-                    {% show_paginator %}
-                </div>
+        </div>
+        <div class="row justify-content-center">
+            <ul class="row pagination text-center h3">
+                {% show_paginator %}
+            </div>
+        </div>
             {% endwith %}
         {% endblock blog_content %}
-    </div>
 </div>
 {% endblock content %}
