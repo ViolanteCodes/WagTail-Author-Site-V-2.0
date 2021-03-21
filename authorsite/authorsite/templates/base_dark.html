@@ -40,14 +40,19 @@
     </head>
 
     <body class="{% block body_class %}{% endblock %}">
+
+        <!-- Load Fader -->
         <svg id="fader" class="fade-out">
         </svg>
         <script>
             fadeInPage();
         </script>
+
+        <!-- Loaad Menu -->
         {% load menu_tags %}
         {% main_menu max_levels=3 add_sub_menus_inline=True template="menus/custom_main_menu.html" %}
 
+    <!-- Load Outer Container Block -->
     {% block startoutercontainer %}
     <!-- Outer Container -->
     <div class="container-fluid container-dark py-2 py-md-5 mb-2 mb-md-5 shadow">

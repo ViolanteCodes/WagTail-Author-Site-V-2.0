@@ -22,7 +22,7 @@
                 {% paginate per_page entries %}
                 {% for entry in entries %}
                     {% entry_url entry blog_page as post_url %}
-                    <article class="card blog-card page-content blog_grid px-4 py-2 mx-3 my-3 col-10">
+                    <article class="card blog-card page-content blog_grid px-2 px-md-4 mx-1 mx-md-3 py-2 my-3 col-11 col-md-10">
                         {% include 'puput/entry_page_header.html' %}
                         <section>
                             {% include 'puput/entry_links.html' %}

@@ -41,20 +41,38 @@
         {% load menu_tags %}
         {% flat_menu 'jove-brand-flat-menu' %}
     
-    <!-- Render outer container -->
-    <div class="container-fluid py-5 mb-5">
+    <!-- Load Outer Container Block -->
+    {% block startoutercontainer %}
+    <!-- Outer Container -->
+    <div class="container-fluid py-2 py-md-5 mb-2 mb-md-5">
+    {% endblock %}
+    <!-- Header Block -->
         {% block header %}
-            <div class="container">
+            <div class="container my-md-5 my-2">
                 <div class="row justify-content-center">
-                    <h1 class="text-center display-5 mt-2 mb-4">
+                    <h1 class="text-center display-5 text-warning text-shadow mt-2 mb-4">
                         {{ page.title }}
                     </h1>
                 </div>
+                {% if page.intro %}
+                <div class="row justify-content-center mt-4">
+                    <div class="col text-center">
+                        <div class="intro text-muted h4">{{ page.intro|richtext }}</div>
+                    </div>
+                </div>
+                {% elif page.description %}
+                <div class="row justify-content-center mt-4">
+                    <div class="col text-center">
+                        <div class="intro text-muted h4">{{ page.description|richtext }}</div>
+                    </div>
+                </div>
+                {% else %}
                 <div class="row justify-content-center mt-4">
                     <div class="col text-center">
                         <div class="intro text-muted h4">{{ page.body|richtext }}</div>
                     </div>
                 </div>
+                {% endif %}
             </div>
         {% endblock %}
         {% block content %}
@@ -66,6 +84,9 @@
             {# Override this in templates to add extra javascript #}
         {% endblock %}
     <!-- Close outer container -->
+    {% block closeoutercontainer %}
+    <!-- Close Outer container -->
+    {% endblock %}
     </div>
     </body>
 </html>
