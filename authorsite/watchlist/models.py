@@ -66,6 +66,13 @@ class MovieIndexPage(Page):
     parent_page_types = ['home.FanSiteHomePage']
     subpage_types = ['watchlist.MoviePage']
 
+    def get_context(self, request):
+        # Update context to include only published posts, ordered by reverse-chron
+        context = super().get_context(request)
+        movie_pages = MoviePage.objects.order_by('-film_number')
+        context['movie_pages'] = movie_pages
+        return context
+
 class CharacterIndexPage(Page):
     """List of all Characters."""
     description = RichTextField()
@@ -78,11 +85,8 @@ class CharacterIndexPage(Page):
 
 class ProducerPage(Page):
     """A model of a producer."""
-    producer_name = models.CharField(max_length=200)
     producer_bio = RichTextField()
-
     content_panels = Page.content_panels + [
-            FieldPanel('producer_name'),
             FieldPanel('producer_bio'),
         ]
         # Parent page / subpage type rules
