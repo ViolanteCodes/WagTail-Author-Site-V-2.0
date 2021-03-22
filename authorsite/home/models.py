@@ -40,8 +40,6 @@ class FanSiteHomePage(Page):
     n_page = models.ForeignKey(
         'wagtailcore.Page', on_delete=models.SET_NULL, blank=True, null=True, related_name='+', 
         help_text="""Choose a page to assign to 'N' value.""")
-    background_image = models.ForeignKey(
-        'wagtailimages.Image', on_delete=models.SET_NULL, related_name='+', null=True)
 
     content_panels = Page.content_panels + [
         FieldPanel('w_page', classname="full"),
@@ -50,7 +48,6 @@ class FanSiteHomePage(Page):
         FieldPanel('d_page', classname="full"),
         FieldPanel('e_page', classname="full"),
         FieldPanel('n_page', classname="full"),
-        ImageChooserPanel('background_image'),
     ]
 
     subpage_types = ['puput.BlogPage','contact.ContactPage', 'watchlist.MovieIndexPage', 'watchlist.DossierPage']
