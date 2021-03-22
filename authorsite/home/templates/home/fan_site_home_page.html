@@ -9,10 +9,10 @@
     {% for item in warden_pages %}
     <div class="row mx-2 my-1 my-sm-4
     justify-content-{% if forloop.counter|divisibleby:2 %}end{% else %}start{% endif %} justify-content-md-center">
-        <a class="col-10 col-md-3 btn btn-outline-primary text-shadow-small" href="{% pageurl item %}" style="opacity: 95%;">
+        <a class="col-10 col-md-3 btn btn-outline-primary text-shadow-small shadow-sm" href="{% pageurl item %}" style="opacity: 95%;">
             <span class="text-danger">{{item.title|slice:":1"}}</span>{{item.title|slice:"1:"}}</a>
         </a>
-        <div class="d-none d-md-inline-flex col-8 card card-text border-light ml-5">
+        <div class="d-none d-md-inline-flex col-8 card card-text border-light ml-5 pt-1">
                 {% if item.specific.description %}
                 {{item.specific.description|richtext}}
                 {% else %}
