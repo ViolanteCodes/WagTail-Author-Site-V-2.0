@@ -69,7 +69,7 @@ class MovieIndexPage(Page):
     def get_context(self, request):
         # Update context to include only published posts, ordered by reverse-chron
         context = super().get_context(request)
-        movie_pages = MoviePage.objects.order_by('-film_number')
+        movie_pages = MoviePage.objects.order_by('film_number')
         context['movie_pages'] = movie_pages
         return context
 
@@ -106,9 +106,8 @@ class ActorPage(Page):
 
 class MoviePage(Page):
     """A page representing a movie entry."""
-    movie_title = models.CharField(max_length = 250)
     film_number = models.IntegerField()
-    release_date = models.DateField()
+    release_year = models.IntegerField()
     producer = models.ForeignKey(
         'watchlist.ProducerPage', on_delete=models.SET_NULL, blank=True, null=True, related_name='+', 
         help_text="""Choose a producer. If you don't see your producer listed here, 
@@ -124,9 +123,8 @@ class MoviePage(Page):
     movie_description = RichTextField(help_text = """Describe the movie.""")
 
     content_panels = Page.content_panels + [
-            FieldPanel('movie_title'),
             FieldPanel('film_number'),
-            FieldPanel('release_date'),
+            FieldPanel('release_year'),
             PageChooserPanel('producer'),
             PageChooserPanel('jove_brand_actor'),
             FieldPanel('rating'),

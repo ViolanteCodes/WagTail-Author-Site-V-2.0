@@ -1,0 +1,27 @@
+{% extends "base_light.html" %}
+{% load wagtailcore_tags wagtailimages_tags static%}
+{% block body_class %}template-homepage{% endblock %}
+<!-- Cancel out headerblock -->
+{% block content %}
+<!-- End Intro block, start iterating through book blocks -->
+    <div class="container card mt-4 mb-5 p-3 shadow">
+        <div class="row justify-content-center">
+            <!-- Left hand column -->
+            <div class="col-12 align-items-center text-center">
+                <h2 class="card-title text-center my-2">
+                        #{{page.film_number}}: {{ page.movie_title }}</a> ({{page.release_date}})
+                </h2>
+                <p class="card-body card-text">
+                    <em>Producer:</em> <a href="">
+                        {{page.producer.title}}</a>
+                </p>
+                <p class="card-body card-text my-2">
+                    {{ page.movie_description|richtext}}
+                </p>
+            </div>
+        <!-- Close Row -->
+        </div>
+    <!-- Close Card -->
+    </div>
+</div>
+{% endblock %}
