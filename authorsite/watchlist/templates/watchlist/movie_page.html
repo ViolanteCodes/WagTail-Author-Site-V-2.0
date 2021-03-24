@@ -1,27 +1,61 @@
 {% extends "base_light.html" %}
 {% load wagtailcore_tags wagtailimages_tags static%}
 {% block body_class %}template-homepage{% endblock %}
+
 <!-- Cancel out headerblock -->
+{% block header %}
+<div class="container my-md-5 mt-2 mb-0 mb-md-1">
+    <div class="row justify-content-center">
+        <h1 class="text-center md-display-5 mt-2 mb-2 mb-md-2">
+            #{{page.film_number}}: {{ page.title }}
+            <span class="text-muted"> ({{ page.release_year }})</span>
+        </h1>
+    </div>
+</div>
+{% endblock %}
+
 {% block content %}
 <!-- End Intro block, start iterating through book blocks -->
-    <div class="container card mt-4 mb-5 p-3 shadow">
-        <div class="row justify-content-center">
-            <!-- Left hand column -->
-            <div class="col-12 align-items-center text-center">
-                <h2 class="card-title text-center my-2">
-                        #{{page.film_number}}: {{ page.title }}</a> ({{page.release_year}})
-                </h2>
-                <p class="card-body card-text">
-                    <em>Producer:</em> <a href="">
-                        {{page.producer.title}}</a>
-                </p>
-                <p class="card-body card-text my-2">
-                    {{ page.movie_description|richtext}}
+<div class="container mt-2 mt-md-5 mb-4 mb-md-5 p-1 p-md-3">
+    <!-- Open Row -->
+    <div class="row d-flex justify-content-between">
+    <!-- Left hand column -->
+        <div class="col-12 col-md-6">
+            <div class="col-12 card">
+                <h5 class="container-fluid card-header text-center my-2">
+                        Producer
+                </h5>
+                <div class="card-body">
+                    <p class="card-text">
+                        <a href="">
+                            {{page.producer.title}}</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 card mt-2 mt-md-3">
+                <h5 class="container-fluid card-header text-center my-2">
+                        Jove Brand
+                </h5>
+                <div class="card-body">
+                    <p class="card-text">
+                            Played by {{page.jove_brand_actor.title}}</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    <!-- Right hand column -->
+        <div class="col-12 col-md-6 card">
+            <h5 class="container-fluid card-header text-center mb-2">
+                    Description
+            </h5>
+            <div class="card-body">
+                <p class="card-text">
+                    {{page.movie_description|richtext}}
                 </p>
             </div>
-        <!-- Close Row -->
         </div>
-    <!-- Close Card -->
+    <!-- Close Row -->
     </div>
+<!-- Close Card -->
 </div>
 {% endblock %}

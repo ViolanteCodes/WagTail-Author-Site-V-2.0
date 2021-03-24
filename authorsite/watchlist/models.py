@@ -94,11 +94,9 @@ class ProducerPage(Page):
 
 class ActorPage(Page):
     """A model of an actor."""
-    actor_name = models.CharField(max_length=200)
     actor_bio = RichTextField()
 
     content_panels = Page.content_panels + [
-            FieldPanel('actor_name'),
             FieldPanel('actor_bio'),
         ]
         # Parent page / subpage type rules
