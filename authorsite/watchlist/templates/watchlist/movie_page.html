@@ -21,37 +21,42 @@
     <div class="row d-flex justify-content-between">
     <!-- Left hand column -->
         <div class="col-12 col-md-6">
-            <div class="col-12 card">
-                <h5 class="container-fluid card-header text-center my-2">
+            <div class="col-12 card px-0 mt-2">
+                <h5 class="card-header text-center my-0">
                         Producer
                 </h5>
                 <div class="card-body">
-                    <p class="card-text">
+                    <p class="card-text text-center">
                         <a href="">
                             {{page.producer.title}}</a>
                     </p>
                 </div>
             </div>
-            <div class="col-12 card mt-2 mt-md-3">
-                <h5 class="container-fluid card-header text-center my-2">
+            <div class="col-12 card px-0 mt-3">
+                <h5 class="card-header text-center my-0">
                         Jove Brand
                 </h5>
-                <div class="card-body">
-                    <p class="card-text">
-                            Played by {{page.jove_brand_actor.title}}</a>
+                <!-- Card Text -->
+                <a href="" class="card-flash">
+                <div class="card-body card-flash">
+                    <p class="card-text text-center">
+                        Played by <em>{{page.jove_brand_actor.title}}</em>
                     </p>
                 </div>
+                </a>
             </div>
         </div>
     <!-- Right hand column -->
-        <div class="col-12 col-md-6 card">
-            <h5 class="container-fluid card-header text-center mb-2">
-                    Description
-            </h5>
-            <div class="card-body">
-                <p class="card-text">
-                    {{page.movie_description|richtext}}
-                </p>
+        <div class="col-12 col-md-6">
+            <div class="col-12 card px-0 mt-3 mt-md-2">
+                <h5 class="container-fluid card-header text-center mb-2">
+                        Description
+                </h5>
+                <div class="card-body">
+                    <span class="card-text">
+                        {{page.movie_description|richtext}}
+                    </span>
+                </div>
             </div>
         </div>
     <!-- Close Row -->

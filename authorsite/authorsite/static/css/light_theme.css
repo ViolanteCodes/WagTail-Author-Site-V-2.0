@@ -10,9 +10,9 @@
     transition: ease 0.5s;
 }
 .card-flash:hover {
-    background-color: #343a40;
+    background-color: #797272;
     transition: ease 0.5s;
-    border: #343a40;
+    border: #797272;
     color: whitesmoke;
 }
 a.card-flash {
@@ -20,4 +20,5 @@ a.card-flash {
 }
 a.card-flash:hover {
     text-decoration: none;
+    text-shadow: 0.1px 0.1px 1px white;
 }
