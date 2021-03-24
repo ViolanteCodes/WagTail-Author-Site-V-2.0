@@ -10,12 +10,14 @@
     transition: ease 0.5s;
 }
 .card-flash:hover {
-    background-color: rgba(247, 202, 140, 0.5);
+    background-color: #343a40;
     transition: ease 0.5s;
+    border: #343a40;
+    color: whitesmoke;
 }
-.card-flash a{
+a.card-flash {
     text-decoration: none;
 }
-.card-flash a:hover {
+a.card-flash:hover {
     text-decoration: none;
 }

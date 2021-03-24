@@ -5,7 +5,7 @@
 {% block content %}
 <!-- End Intro block, start iterating through book blocks -->
     {% for movie in movie_pages %}
-    <a href="{% pageurl movie.specific %}">
+    <a href="{% pageurl movie.specific %}" class="card-flash">
     <div class="container card mt-4 mb-2 p-3 card-flash shadow-sm">
         <div class="row justify-content-center">
             <div class="col-12 align-items-center text-center">
