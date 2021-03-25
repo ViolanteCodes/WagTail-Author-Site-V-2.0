@@ -171,7 +171,7 @@ MEDIA_URL = '/media/'
 
 # Email Settings:
 
-EMAIL_BACKEND = config('EMAIL_BACKEND')
+# EMAIL_BACKEND = config('EMAIL_BACKEND')
 CONTACT_EMAIL = config('CONTACT_EMAIL')
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
