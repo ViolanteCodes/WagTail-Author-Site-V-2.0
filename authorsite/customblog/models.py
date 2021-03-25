@@ -57,28 +57,12 @@ class MyBlogAbstract(BlogAbstract):
 class CustomEntryAbstract(EntryAbstract):
     """Puput Base Entry Abstract model, extended to allow for custom methods
     and template choices."""
-    TEMPLATE_CHOICES = [
-        ('base_dark.html', 'Dark'),
-        ('base_light.html', 'Light')
-    ]
-    template_theme = models.CharField(
-        max_length = 250,
-        choices = TEMPLATE_CHOICES,
-        default = 'Dark', 
-        help_text = """
-        Choose dark theme to match main site and light theme
-        to match light site."""
-    )
 
-    content_panels = EntryAbstract.content_panels + [
-        FieldPanel('template_theme'),
-    ]
+    def template_theme(self):
+        """Custom method to return parent page's template theme as a variable."""
+        parent_page = self.get_parent()
+        parent_theme = parent_page.specific.template_theme
+        return parent_theme
 
     class Meta:
         abstract = True
-
-    def get_context(self, request, *args, **kwargs):
-        context = super(CustomEntryAbstract, self).get_context(request, *args, **kwargs)
-        context['blog_page'] = self.blog_page
-        context['template_theme'] = self.template_theme
-        return context
