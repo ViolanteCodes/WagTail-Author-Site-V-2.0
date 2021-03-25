@@ -44,6 +44,12 @@ class ProducerIndexPage(Page):
     parent_page_types = ['watchlist.DossierPage']
     subpage_types = ['watchlist.ProducerPage']
 
+    def get_all_producers(self):
+        """A custom method to return all producers from the database."""
+        all_producers = ProducerPage.objects.order_by('title')
+        return all_producers
+
+
 class ActorIndexPage(Page):
     """List of all Actors."""
     description = RichTextField()
