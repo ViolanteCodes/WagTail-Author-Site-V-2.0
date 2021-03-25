@@ -43,7 +43,7 @@ class ContactPage(Page):
             #Process the form info to get it ready for send_mail
             subject_line = f"""New message from {site_name} contact form: 
             {message_subject}"""
-            message_body = f"""You have recieved the following message from
+            message_body = f"""You have received the following message from
             your website, {site_name}:\n\nSender's Name: {senders_name}\n\n
             Sender's Email:{senders_email}\n\nSubject:{message_subject}\n\n
             Message Body: {message}"""
