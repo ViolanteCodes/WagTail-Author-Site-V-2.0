@@ -22,3 +22,11 @@ a.card-flash:hover {
     text-decoration: none;
     text-shadow: 0.2px 0.2px 1px #1a1a1a;
 }
+span.underline {
+    text-decoration: underline dashed lightslategray 1px;
+    transition: ease 0.5s;
+}
+span.underline:hover {
+    text-decoration: none;
+    transition: ease 0.5s;
+}

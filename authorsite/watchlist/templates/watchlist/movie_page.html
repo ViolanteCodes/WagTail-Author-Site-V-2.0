@@ -6,7 +6,7 @@
 {% block header %}
 <div class="container my-md-5 mt-2 mb-0 mb-md-1">
     <div class="row justify-content-center">
-        <h1 class="text-center md-display-5 mt-2 mb-2 mb-md-2 text-shadow-small">
+        <h1 class="text-center mt-2 mb-2 mb-md-2 text-shadow-small">
             #{{page.film_number}}: {{ page.title }}
             <span class="text-muted"> ({{ page.release_year }})</span>
         </h1>
@@ -16,7 +16,19 @@
 
 {% block content %}
 <!-- End Intro block, start iterating through book blocks -->
-<div class="container mt-2 mt-md-5 mb-4 mb-md-5 p-1 p-md-3">
+<div class="container mt-2 mt-md-5 mb-4 pb-4 mb-md-5 p-1 p-md-3">
+    <!-- Open Row -->
+    <div class="row d-flex justify-content-center">
+        <!-- Back to watchlist Button -->
+        <div class="col mb-2 mb-md-3">
+            <a href="{{page.get_parent.url}}" class="card-flash">
+                <div class="col-12 card card-flash px-0 mt-2 text-center">
+                <h5 class="card-header">Back to Watchlist</h5>
+                </div>
+            </a>
+        </div>
+    <!-- Close row -->
+    </div>
     <!-- Open Row -->
     <div class="row d-flex justify-content-between">
     <!-- Left hand column -->
@@ -26,10 +38,10 @@
                         Producer
                 </h5>
                 <!-- Card text -->
-                <a href="" class="card-flash">
+                <a href="{% pageurl page.specific.producer %}" class="card-flash">
                 <div class="card-body card-flash">
                     <p class="card-text text-center">
-                        {{page.producer.title}}
+                        <span class="underline">{{page.producer.title}}</span>
                     </p>
                 </div>
                 </a>
@@ -39,10 +51,10 @@
                         Jove Brand
                 </h5>
                 <!-- Card Text -->
-                <a href="" class="card-flash">
+                <a href="{% pageurl page.specific.jove_brand_actor %}" class="card-flash">
                 <div class="card-body card-flash">
                     <p class="card-text text-center">
-                        <strong>Played by <em>{{page.jove_brand_actor.title}}</em></strong>
+                        Played by <span class="underline">{{page.jove_brand_actor.title}}</span>
                     </p>
                 </div>
                 </a>
