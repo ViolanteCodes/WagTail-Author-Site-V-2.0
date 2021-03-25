@@ -92,6 +92,14 @@ class ProducerPage(Page):
         # Parent page / subpage type rules
     parent_page_types = ['watchlist.ProducerIndexPage']
 
+    def get_produced_movies(self):
+        """Custom method that returns titles and links for all 
+        movies produced by this producer."""
+        
+        all_movies = MoviePage.objects.filter(producer=self).order_by('film_number')
+        return all_movies
+
+
 class ActorPage(Page):
     """A model of an actor."""
     actor_bio = RichTextField()
