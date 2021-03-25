@@ -49,6 +49,21 @@ class ProducerIndexPage(Page):
         all_producers = ProducerPage.objects.order_by('title')
         return all_producers
 
+class ProducerPage(Page):
+    """A model of a producer."""
+    producer_bio = RichTextField()
+    content_panels = Page.content_panels + [
+            FieldPanel('producer_bio'),
+        ]
+        # Parent page / subpage type rules
+    parent_page_types = ['watchlist.ProducerIndexPage']
+
+    def get_produced_movies(self):
+        """Custom method that returns titles and links for all 
+        movies produced by this producer."""
+        
+        all_movies = MoviePage.objects.filter(producer=self).order_by('film_number')
+        return all_movies
 
 class ActorIndexPage(Page):
     """List of all Actors."""
@@ -65,6 +80,48 @@ class ActorIndexPage(Page):
         """A custom method to return all producers from the database."""
         all_actors = ActorPage.objects.order_by('title')
         return all_actors
+
+class ActorPage(Page):
+    """A model of an actor."""
+    actor_bio = RichTextField()
+
+    content_panels = Page.content_panels + [
+            FieldPanel('actor_bio'),
+        ]
+        # Parent page / subpage type rules
+    parent_page_types = ['watchlist.ActorIndexPage']
+
+    def get_acted_movies(self):
+        """Custom method that returns titles and links for all 
+        movies produced by this producer."""
+        
+        all_movies = MoviePage.objects.filter(jove_brand_actor=self).order_by('film_number')
+        return all_movies
+
+class CharacterIndexPage(Page):
+    """List of all Characters."""
+    description = RichTextField()
+
+    content_panels = Page.content_panels + [
+            FieldPanel('description', classname="full"),
+        ]
+    parent_page_types = ['watchlist.DossierPage']
+    subpage_types = ['watchlist.CharacterPage']
+
+    def get_all_characters(self):
+        """A custom method to return all producers from the database."""
+        all_characters = CharacterPage.objects.order_by('title')
+        return all_characters
+
+class CharacterPage(Page):
+    """A page representing a character entry."""
+    description = RichTextField()
+
+    content_panels = Page.content_panels + [
+            FieldPanel('description', classname="full"),
+        ]
+        # Parent page / subpage type rules
+    parent_page_types = ['watchlist.CharacterIndexPage']
 
 class MovieIndexPage(Page):
     """List of all Movies."""
@@ -83,55 +140,6 @@ class MovieIndexPage(Page):
         movie_pages = MoviePage.objects.order_by('film_number')
         context['movie_pages'] = movie_pages
         return context
-
-class CharacterIndexPage(Page):
-    """List of all Characters."""
-    description = RichTextField()
-
-    content_panels = Page.content_panels + [
-            FieldPanel('description', classname="full"),
-        ]
-    parent_page_types = ['watchlist.DossierPage']
-    subpage_types = ['watchlist.CharacterPage']
-
-    def get_all_characters(self):
-        """A custom method to return all producers from the database."""
-        all_characters = CharacterPage.objects.order_by('title')
-        return all_characters
-
-class ProducerPage(Page):
-    """A model of a producer."""
-    producer_bio = RichTextField()
-    content_panels = Page.content_panels + [
-            FieldPanel('producer_bio'),
-        ]
-        # Parent page / subpage type rules
-    parent_page_types = ['watchlist.ProducerIndexPage']
-
-    def get_produced_movies(self):
-        """Custom method that returns titles and links for all 
-        movies produced by this producer."""
-        
-        all_movies = MoviePage.objects.filter(producer=self).order_by('film_number')
-        return all_movies
-
-
-class ActorPage(Page):
-    """A model of an actor."""
-    actor_bio = RichTextField()
-
-    content_panels = Page.content_panels + [
-            FieldPanel('actor_bio'),
-        ]
-        # Parent page / subpage type rules
-    parent_page_types = ['watchlist.ActorIndexPage']
-
-    def get_acted_movies(self):
-        """Custom method that returns titles and links for all 
-        movies produced by this producer."""
-        
-        all_movies = MoviePage.objects.filter(jove_brand_actor=self).order_by('film_number')
-        return all_movies
 
 class MoviePage(Page):
     """A page representing a movie entry."""
@@ -162,12 +170,29 @@ class MoviePage(Page):
         # Parent page / subpage type rules
     parent_page_types = ['watchlist.MovieIndexPage']
 
-class CharacterPage(Page):
-    """A page representing a character entry."""
+class ArmoryIndexPage(Page):
+    """List of all Armory Items."""
     description = RichTextField()
 
     content_panels = Page.content_panels + [
             FieldPanel('description', classname="full"),
         ]
-        # Parent page / subpage type rules
-    parent_page_types = ['watchlist.CharacterIndexPage']
+    parent_page_types = ['home.FanSiteHomePage']
+    subpage_types = ['watchlist.ArmoryPage']
+
+    def get_context(self, request):
+        # Update context to include only published posts, ordered by reverse-chron
+        context = super().get_context(request)
+        armory_items = ArmoryPage.objects.order_by('title')
+        context['armory_items'] = armory_items
+        return context
+
+class ArmoryPage(Page):
+    """An Armory item"""
+    description = RichTextField()
+    content_panels = Page.content_panels + [
+        FieldPanel('description', classname="full"),
+    ]
+    parent_page_types = ['watchlist.ArmoryIndexPage']
+
+

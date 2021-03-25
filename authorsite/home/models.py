@@ -50,7 +50,7 @@ class FanSiteHomePage(Page):
         FieldPanel('n_page', classname="full"),
     ]
 
-    subpage_types = ['puput.BlogPage','contact.ContactPage', 'watchlist.MovieIndexPage', 'watchlist.DossierPage']
+    subpage_types = ['puput.BlogPage','contact.ContactPage', 'watchlist.MovieIndexPage', 'watchlist.DossierPage', 'watchlist.ArmoryIndexPage']
 
     def get_context(self, request):
         """Custom context to create list of warden_pages."""
