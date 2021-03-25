@@ -31,13 +31,25 @@
         {# Global stylesheets #}
         <!-- Get Font Awesome URL from .env file with custom tag -->
         <script src="{% get_font_awesome_url %}"></script>
+        <!-- Pull in JS file for animating shutter effect -->
+        <script src="{% static 'js/authorsite.js' %}"></script>
 
         {% block extra_css %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/light_theme.css' %}">
         {% endblock %}
     </head>
 
+    
     <body class="{% block body_class %}{% endblock %}">
+
+        <!-- Load Fader -->
+        <svg id="fader" class="fade-out">
+        </svg>
+        <script>
+            fadeInPage();
+        </script>
+
+        <!-- Load Menu -->
         {% load menu_tags %}
         {% flat_menu 'jove-brand-flat-menu' %}
     
