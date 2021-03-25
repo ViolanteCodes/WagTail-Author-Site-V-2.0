@@ -126,6 +126,13 @@ class ActorPage(Page):
         # Parent page / subpage type rules
     parent_page_types = ['watchlist.ActorIndexPage']
 
+    def get_acted_movies(self):
+        """Custom method that returns titles and links for all 
+        movies produced by this producer."""
+        
+        all_movies = MoviePage.objects.filter(jove_brand_actor=self).order_by('film_number')
+        return all_movies
+
 class MoviePage(Page):
     """A page representing a movie entry."""
     film_number = models.IntegerField()
@@ -157,12 +164,10 @@ class MoviePage(Page):
 
 class CharacterPage(Page):
     """A page representing a character entry."""
-    character_name = models.CharField(max_length=250)
-    character_description = RichTextField()
+    description = RichTextField()
 
     content_panels = Page.content_panels + [
-            FieldPanel('character_name'),
-            FieldPanel('character_description', classname="full"),
+            FieldPanel('description', classname="full"),
         ]
         # Parent page / subpage type rules
     parent_page_types = ['watchlist.CharacterIndexPage']

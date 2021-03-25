@@ -1,0 +1,68 @@
+{% extends "base_light.html" %}
+{% load wagtailcore_tags wagtailimages_tags static%}
+{% block body_class %}template-homepage{% endblock %}
+
+<!-- Cancel out headerblock -->
+{% block header %}
+<div class="container my-md-5 mt-2 mb-0 mb-md-1">
+    <div class="row justify-content-center">
+        <h1 class="text-center mt-2 mb-2 mb-md-2 text-shadow-small">
+            {{page.title}}
+        </h1>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<!-- End Intro block, start iterating through book blocks -->
+<div class="container mt-2 mt-md-5 mb-4 pb-4 mb-md-5 p-1 p-md-3">
+    <!-- Open Row -->
+    <div class="row d-flex justify-content-center">
+        <!-- Back to watchlist Button -->
+        <div class="col mb-2 mb-md-3">
+            <a href="{{page.get_parent.url}}" class="card-flash">
+                <div class="col-12 card card-flash px-0 mt-2 text-center">
+                <h5 class="card-header">Back to All Characters</h5>
+                </div>
+            </a>
+        </div>
+    <!-- Close row -->
+    </div>
+    <!-- Open Row -->
+    <div class="row d-flex justify-content-between">
+    <!-- Left hand column
+        <div class="col-12 col-md-6">
+            <div class="col-12 card px-0 mt-2">
+                <h5 class="card-header text-center my-0">
+                    Associated Movies
+                </h5> -->
+                <!-- Card text -->
+                <!-- <div class="card-body">
+                    {% for movie in page.get_acted_movies %}
+                    <p class="card-text text-center">
+                        <a href="{% pageurl movie %}">
+                        Jove Brand #{{movie.specific.film_number}}: {{movie.specific.title}}
+                        </a>
+                    </p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div> -->
+    <!-- Right hand column -->
+        <div class="col-12 col-md-6">
+            <div class="col-12 card px-0 mt-3 mt-md-2">
+                <h5 class="container-fluid card-header text-center mb-2">
+                        Character Description
+                </h5>
+                <div class="card-body">
+                    <span class="card-text">
+                        {{page.description|richtext}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    <!-- Close Row -->
+    </div>
+<!-- Close Card -->
+</div>
+{% endblock %}

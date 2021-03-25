@@ -3,35 +3,29 @@
 {% block body_class %}template-homepage{% endblock %}
 <!-- Cancel out headerblock -->
 {% block content %}
+<div class="container mb-5">
 <!-- End Intro block, start iterating through book blocks -->
-    <a href="{{ page.character_page.specific.url }}" class="card-flash">
-        <div class="container card mt-4 mb-2 p-3 card-flash shadow-sm">
-            <div class="row justify-content-center">
-                <div class="col-12 align-items-center text-center">
-                    <h5 class="card-title text-center my-2"> {{ page.character_page.title }}
-                    </h5>
-                </div>
-            </div>
-        </div>
-    </a>
-    <a href="{{ page.actor_page.specific.url }}" class="card-flash">
+    {% for actor in page.get_all_actors %}
+    <a href="{% pageurl actor.specific %}" class="card-flash">
     <div class="container card mt-4 mb-2 p-3 card-flash shadow-sm">
         <div class="row justify-content-center">
             <div class="col-12 align-items-center text-center">
-                <h5 class="card-title text-center my-2"> {{ page.actor_page.title }}
+                <h5 class="card-title text-center my-2"> {{actor.title}}
                 </h5>
             </div>
         </div>
     </div>
     </a>
-    <a href="{{ page.producer_page.specific.url }}" class="card-flash">
+    {% endfor %}
+    <a href="{{page.get_parent.url}}" class="card-flash">
         <div class="container card mt-4 mb-2 p-3 card-flash shadow-sm">
             <div class="row justify-content-center">
                 <div class="col-12 align-items-center text-center">
-                    <h5 class="card-title text-center my-2"> {{ page.producer_page.title }}
+                    <h5 class="card-title text-center my-2"> Back to All Dossiers
                     </h5>
                 </div>
             </div>
         </div>
     </a>
+</div>
 {% endblock %}
