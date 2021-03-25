@@ -61,6 +61,11 @@ class ActorIndexPage(Page):
     parent_page_types = ['watchlist.DossierPage']
     subpage_types = ['watchlist.ActorPage']
 
+    def get_all_actors(self):
+        """A custom method to return all producers from the database."""
+        all_actors = ActorPage.objects.order_by('title')
+        return all_actors
+
 class MovieIndexPage(Page):
     """List of all Movies."""
     description = RichTextField()
@@ -88,6 +93,11 @@ class CharacterIndexPage(Page):
         ]
     parent_page_types = ['watchlist.DossierPage']
     subpage_types = ['watchlist.CharacterPage']
+
+    def get_all_characters(self):
+        """A custom method to return all producers from the database."""
+        all_characters = CharacterPage.objects.order_by('title')
+        return all_characters
 
 class ProducerPage(Page):
     """A model of a producer."""
