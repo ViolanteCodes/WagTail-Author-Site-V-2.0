@@ -66,3 +66,17 @@ span.underline:hover {
     opacity: 1;
     animation-name: fade-in;
 }
+
+input {
+    width: 80%;
+    padding: 10px;
+    font-size: large;
+}
+textarea {
+    width: 80%;
+    padding: 10px;
+    font-size: large;
+}
+.newsletter-font {
+    font-size: x-large;
+}
