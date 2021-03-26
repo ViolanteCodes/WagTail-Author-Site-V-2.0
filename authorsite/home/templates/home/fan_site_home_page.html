@@ -5,21 +5,35 @@
 {% block header %}{% endblock %}
 {% block content %}
 <!-- Create warden pages block -->
-<div class="container px-2 px-md-4 py-4 col-12 text-left">
+<div class="d-block d-md-none container px-2 px-md-4 py-4 col-12 text-left">
     {% for item in warden_pages %}
     <div class="row mx-2 my-1 my-sm-4
     justify-content-{% if forloop.counter|divisibleby:2 %}end{% else %}start{% endif %} justify-content-md-center">
-        <a class="col-10 col-md-3 btn btn-outline-primary text-shadow-small shadow-sm" href="{% pageurl item %}" style="opacity: 95%;">
+        <a class="col-10 col-md-3 btn btn-outline-primary shadow-sm" href="{% pageurl item %}" style="opacity: 95%;">
             <span class="text-danger">{{item.title|slice:":1"}}</span>{{item.title|slice:"1:"}}</a>
         </a>
-        <div class="d-none d-md-inline-flex col-8 card card-text border-light ml-5 pt-1 lead">
-                {% if item.specific.description %}
-                {{item.specific.description|richtext}}
-                {% else %}
-                {{item.specific.body|richtext}}
-                {% endif %}
-        </div>
     </div>
     {% endfor %}
 </div>
+<!-- Desktop Pages Block -->
+<div class="d-none d-md-block container mb-5">
+    <!-- End Intro block, start iterating through book blocks -->
+        {% for item in warden_pages %}
+        <a href="{% pageurl item.specific %}" class="card-flash">
+        <div class="container card mt-4 mb-2 p-3 card-flash shadow-sm">
+            <div class="row justify-content-center">
+                <div class="col-12 align-items-center text-center">
+                    <h5 class="card-title text-center my-2"> <span class="text-warning">{{ item.title }}
+                        </span> //<br> {% if item.specific.description %}
+                        {{item.specific.description|richtext}}
+                        {% else %}
+                        {{item.specific.body|richtext}}
+                        {% endif %}
+                    </h5>
+                </div>
+            </div>
+        </div>
+        </a>
+        {% endfor %}
+    </div>
 {% endblock %}
