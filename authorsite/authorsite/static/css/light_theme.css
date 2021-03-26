@@ -4,6 +4,13 @@
 .text-shadow-small {
     text-shadow: 0px 1px 1px #1a1a1a;
 }
+/* Menu Customization */
+a.nav-link {
+    transition: ease 0.3s;
+}
+a.nav-link:hover {
+    transition: ease 0.3s;
+}
 
 /* Watchlist page */
 .card-flash {

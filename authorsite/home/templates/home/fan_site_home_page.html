@@ -4,7 +4,7 @@
 <!-- Cancel out header block -->
 {% block header %}{% endblock %}
 {% block content %}
-<!-- Create warden pages block -->
+<!-- Mobile Warden Pages block -->
 <div class="d-block d-md-none container px-2 px-md-4 py-4 col-12 text-left">
     {% for item in warden_pages %}
     <div class="row mx-2 my-1 my-sm-4
@@ -18,22 +18,25 @@
 <!-- Desktop Pages Block -->
 <div class="d-none d-md-block container mb-5">
     <!-- End Intro block, start iterating through book blocks -->
-        {% for item in warden_pages %}
-        <a href="{% pageurl item.specific %}" class="card-flash">
-        <div class="container card mt-4 mb-2 p-3 card-flash shadow-sm">
-            <div class="row justify-content-center">
-                <div class="col-12 align-items-center text-center">
-                    <h5 class="card-title text-center my-2"> <span class="text-warning">{{ item.title }}
-                        </span> //<br> {% if item.specific.description %}
-                        {{item.specific.description|richtext}}
-                        {% else %}
-                        {{item.specific.body|richtext}}
-                        {% endif %}
+    {% for item in warden_pages %}
+    <a href="{% pageurl item.specific %}" class="card-flash">
+    <div class="container card mt-4 mb-2 p-3 card-flash shadow-sm">
+        <div class="row justify-content-center">
+            <div class="col-12 align-items-center text-center">
+                <h3 class="card-title text-center my-2 text-warning">{{ item.title }}</h3>
+                <div>
+                    <h5>
+                    {% if item.specific.description %}
+                    {{item.specific.description|richtext}}
+                    {% else %}
+                    {{item.specific.body|richtext}}
+                    {% endif %}
                     </h5>
                 </div>
             </div>
         </div>
-        </a>
-        {% endfor %}
     </div>
+    </a>
+    {% endfor %}
+</div>
 {% endblock %}
