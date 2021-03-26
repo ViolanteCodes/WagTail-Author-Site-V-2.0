@@ -46,7 +46,7 @@ span.underline:hover {
     height: 100%;
     z-index: 999999;
     pointer-events: none;
-    background: #ffd599;
+    background: #f0ad4e;
     animation-duration: 300ms;
     animation-timing-function: ease-in-out;
 }
