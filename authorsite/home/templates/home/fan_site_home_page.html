@@ -22,9 +22,12 @@
     <a href="{% pageurl item.specific %}" class="card-flash">
     <div class="container card mt-4 mb-2 p-3 card-flash shadow-sm">
         <div class="row justify-content-center">
-            <div class="col-12 align-items-center text-center">
-                <h3 class="card-title text-center my-2 text-warning">{{ item.title }}</h3>
-                <div>
+            <div class="col-12 d-flex align-items-center text-left">
+                <div class="col-4 d-flex-inline">
+                    <h3 class="card-title text-left my-2 text-warning">
+                        <span class="text-primary">{{item.title|slice:":1"}}</span>{{item.title|slice:"1:"}}</h3>
+                </div>
+                <div class="col-8 d-flex-inline">
                     <h5>
                     {% if item.specific.description %}
                     {{item.specific.description|richtext}}
