@@ -18,6 +18,10 @@ db.sqlite3
 # User contributed media
 /media/
 
+# Backup Folder
+/backups/
+*.backup_script.py
+
 # macOS
 ._*
 .DS_Store
