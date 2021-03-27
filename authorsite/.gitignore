@@ -20,7 +20,7 @@ db.sqlite3
 
 # Backup Folder
 /backups/
-*.backup_script.py
+backup_script.py
 
 # macOS
 ._*
