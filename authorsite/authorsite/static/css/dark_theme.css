@@ -215,18 +215,18 @@ span.endless_page_current {
 /*----Fade-in animations for HomePage----*/
 /*-------Animated Fade-in-----------*/
 .fade-in-quote {
-    animation: fadeIn ease-in 1s;
-    -webkit-animation: fadeIn ease-in 1s;
-    -moz-animation: fadeIn ease-in 1s;
-    -o-animation: fadeIn ease-in 1s;
-    -ms-animation: fadeIn ease-in 1s;
+    animation: fadeIn ease-in 2s;
+    -webkit-animation: fadeIn ease-in 2s;
+    -moz-animation: fadeIn ease-in 2s;
+    -o-animation: fadeIn ease-in 2s;
+    -ms-animation: fadeIn ease-in 2s;
     }
 .fade-in-book-cover {
-    animation: fadeIn ease-in 3s;
-    -webkit-animation: fadeIn ease-in 3s;
-    -moz-animation: fadeIn ease-in 3s;
-    -o-animation: fadeIn ease-in 3s;
-    -ms-animation: fadeIn ease-in 3s;
+    animation: fadeIn ease-in 5s;
+    -webkit-animation: fadeIn ease-in 5s;
+    -moz-animation: fadeIn ease-in 5s;
+    -o-animation: fadeIn ease-in 5s;
+    -ms-animation: fadeIn ease-in 5s;
 }
 /*---fade-in keyframes--*/
 @keyframes fadeIn {

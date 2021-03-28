@@ -23,7 +23,7 @@
         <div class="col-lg-4 col-sm-0">
         </div>
         <div class="col-lg-4 col-sm-6">
-            <div class="w-100">
+            <div class="w-100 fade-in-quote">
                 <blockquote class="text-light h3 md-h1 text-center mt-3 text-uppercase">
                     {{page.caption_text|richtext}}
                 </blockquote>
@@ -31,7 +31,7 @@
         </div>
         <div class="col-lg-4 col-sm-6 align-self-center justify-self-center text-center">
             {% image page.book_image height-2000 as bookimg %}
-            <img src="{{bookimg.url}}" class="max-vh-60 pt-4 pb-4 px-2 mw-100 mt-2 mb-4">
+            <img src="{{bookimg.url}}" class="max-vh-60 pt-4 pb-4 px-2 mw-100 mt-2 mb-4 fade-in-book-cover">
         </div>
 </div>
 {% endblock %}
