@@ -29,35 +29,7 @@ a.menu-link:hover {
     color: #f0ad4e !important;
     transition: ease 0.6s;
 }
-/*------Fader animation for soft-load-----------*/
-#fader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 999999;
-    pointer-events: none;
-    background: black;
-    animation-duration: 300ms;
-    animation-timing-function: ease-in-out;
-}
-@keyframes fade-out {
-    from { opacity: 1 }
-      to { opacity: 0 }
-}
-@keyframes fade-in {
-    from { opacity: 0 }
-      to { opacity: 1 }
-}
-#fader.fade-out {
-    opacity: 0;
-    animation-name: fade-out;
-}
-#fader.fade-in {
-    opacity: 1;
-    animation-name: fade-in;
-}
+
 /* Landing Hero Image Styling */
 div.max-vh-75 {
     max-height: 75vh;
@@ -210,4 +182,58 @@ a.endless_page_link:hover {
 }
 span.endless_page_current {
     color: #C0C6C9;
+}
+/*------Fader animation for soft-load-----------*/
+#fader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    pointer-events: none;
+    background: black;
+    animation-duration: 300ms;
+    animation-timing-function: ease-in-out;
+}
+@keyframes fade-out {
+    from { opacity: 1 }
+      to { opacity: 0 }
+}
+@keyframes fade-in {
+    from { opacity: 0 }
+      to { opacity: 1 }
+}
+#fader.fade-out {
+    opacity: 0;
+    animation-name: fade-out;
+}
+#fader.fade-in {
+    opacity: 1;
+    animation-name: fade-in;
+}
+/*----Fade-in animations for HomePage----*/
+/*-------Animated Fade-in-----------*/
+.fade-in-quote {
+    animation: fadeIn ease-in 1s;
+    -webkit-animation: fadeIn ease-in 1s;
+    -moz-animation: fadeIn ease-in 1s;
+    -o-animation: fadeIn ease-in 1s;
+    -ms-animation: fadeIn ease-in 1s;
+    }
+.fade-in-book-cover {
+    animation: fadeIn ease-in 3s;
+    -webkit-animation: fadeIn ease-in 3s;
+    -moz-animation: fadeIn ease-in 3s;
+    -o-animation: fadeIn ease-in 3s;
+    -ms-animation: fadeIn ease-in 3s;
+}
+/*---fade-in keyframes--*/
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+@-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
 }
