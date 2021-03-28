@@ -215,11 +215,11 @@ span.endless_page_current {
 /*----Fade-in animations for HomePage----*/
 /*-------Animated Fade-in-----------*/
 .fade-in-quote {
-    animation: fadeIn ease-in 2s;
-    -webkit-animation: fadeIn ease-in 2s;
-    -moz-animation: fadeIn ease-in 2s;
-    -o-animation: fadeIn ease-in 2s;
-    -ms-animation: fadeIn ease-in 2s;
+    animation: fadeIn ease-in 3s;
+    -webkit-animation: fadeIn ease-in 3s;
+    -moz-animation: fadeIn ease-in 3s;
+    -o-animation: fadeIn ease-in 3s;
+    -ms-animation: fadeIn ease-in 3s;
     }
 .fade-in-book-cover {
     animation: fadeIn ease-in 5s;
