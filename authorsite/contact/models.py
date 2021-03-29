@@ -10,13 +10,16 @@ from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
 from wagtail.admin.edit_handlers import FieldPanel
 
+from wagtailmenus.models import MenuPageMixin
+from wagtailmenus.panels import menupage_panel
+
 class ContactForm(forms.Form):
     your_name = forms.CharField(max_length = 100)
     your_email = forms.EmailField()
     subject = forms.CharField(max_length = 100)
     your_message = forms.CharField(widget = forms.Textarea)
   
-class ContactPage(Page):
+class ContactPage(Page, MenuPageMixin):
     """A custom contact page with contact form."""
     body = RichTextField(blank=True)
     TEMPLATE_CHOICES = [
@@ -34,8 +37,9 @@ class ContactPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('body', classname="full"),
         FieldPanel('template_theme'),
+        menupage_panel,
     ]
-    subpage_types = ['contact.ContactSuccessPage']
+    subpage_types = ['contact.ContactSuccessPage', 'contact.MailChimpPage']
     parent_page_types = ['home.HomePage', 'home.FanSiteHomePage']
 
     def serve(self, request):
@@ -91,4 +95,16 @@ class ContactSuccessPage(Page):
         parent_theme = parent_page.specific.template_theme
         return parent_theme
 
+class MailChimpPage(Page):
+    """A signup form for mailchimp."""
+    description = RichTextField()
+    form_action = models.CharField(max_length=250)
+    mailchimp_name_field = models.CharField(max_length=250)
+    content_panels = Page.content_panels + [
+        FieldPanel('description', classname="full"),
+        FieldPanel('form_action', classname="full"),
+        FieldPanel('mailchimp_name_field', classname="full"),
+    ]
 
+    parent_page_types = ['contact.ContactPage']
+    subpage_types = []
