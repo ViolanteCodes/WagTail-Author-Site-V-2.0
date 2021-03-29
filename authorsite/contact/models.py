@@ -95,11 +95,11 @@ class MailChimpPage(Page):
     """A signup form for mailchimp."""
     description = RichTextField()
     form_action = models.CharField(max_length=250)
-    mailchimp_id = models.CharField(max_length=250)
+    mailchimp_name_field = models.CharField(max_length=250)
     content_panels = Page.content_panels + [
         FieldPanel('description', classname="full"),
         FieldPanel('form_action', classname="full"),
-        FieldPanel('mailchimp_id', classname="full"),
+        FieldPanel('mailchimp_name_field', classname="full"),
     ]
 
     parent_page_types = ['home.HomePage']
