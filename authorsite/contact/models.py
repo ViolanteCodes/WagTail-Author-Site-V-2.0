@@ -91,4 +91,16 @@ class ContactSuccessPage(Page):
         parent_theme = parent_page.specific.template_theme
         return parent_theme
 
+class MailChimpPage(Page):
+    """A signup form for mailchimp."""
+    description = RichTextField()
+    form_action = models.CharField(max_length=250)
+    mailchimp_id = models.CharField(max_length=250)
+    content_panels = Page.content_panels + [
+        FieldPanel('description', classname="full"),
+        FieldPanel('form_action', classname="full"),
+        FieldPanel('mailchimp_id', classname="full"),
+    ]
 
+    parent_page_types = ['home.HomePage']
+    subpage_types = []
