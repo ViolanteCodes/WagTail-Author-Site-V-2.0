@@ -13,82 +13,65 @@
 <!-- Load Custom Filters -->
 {% load custom_filters %}
 
-{% block header %}{% endblock %}
+{% block header %}
+<div class="container my-md-5 my-2">
+    <div class="row justify-content-center title-section">
+        <h1 class="text-center display-5 text-warning mt-2 mb-4">
+            <a href="{% pageurl blog_page %}" class="blog-link">{{ blog_page.title }}</a>
+        </h1>
+    </div>
+    <div class="row justify-content-center mt-4">
+        <div class="col text-center">
+            <div class="intro text-muted h4">{{ blog_page.description }}</div>
+        </div>
+    </div>
+</div>
+{% endblock %}
 
 {% block content %}
-<!-- Main Container For Page/Background Color -->
-<div class="container-fluid container-blog px-0 px-md-3 py-2 py-md-5 mb-5">
-<!-- Contrasting Content Area -->
-    <div class="container">
-        <!-- Blog Header - From parent blog page-->
-        {% block blog_header %}
-        <div class="row container-fluid justify-content-center text-center mb-3 mb-md-5">
-            <div class="container about justify-content-center">
-                <section class="title-section text-center">
-                    <h1 class="title-header py-5">
-                        <a href="{% pageurl blog_page %}" class="blog-link">{{ blog_page.title }}</a>
-                    </h1>
-                        <h2 class="intro text-muted h4 text-center mb-5">{{ blog_page.description }}</h2>
-                </section>
-            </div>
-        </div>
-        {% endblock blog_header %}
+{% block blog_header %}
+{% endblock blog_header %}
 
-        <!-- Entry Page Content -->
-        <div class="row">
-            <div class="col-12 card blog-card mb-4 px-0 px-md-3">
-                {% block blog_content %}
-                <article class="box page-content"
-                {% if self.id %}data-entry-page-update-comments-url="{% url 'entry_page_update_comments' self.id %}{% endif %}">
-                {% if self.header_image %}
-                        <div class="row justify-content-center">                   
-                            <col class="image featured col-12 sm-col-8 lg-col-6 xl-col-4 ">
-                                {% image self.header_image fill-800x450 as header_image %}
-                                <img alt="{{ self.header_image.title }}" src="{{ header_image.url }}" class="text-center img-fluid">
-                            </span>
-                        </div>
-                        {% endif %}    
-                {% include 'puput/entry_page_header.html' with entry=self %}
-                    <section class="mt-4 mx-4 pt-4 pb-3">
-                    {{ self.body|richtext}}
-                        <div class="row justify-content-center">
-                            <div class="col text-center px-0">
-                                <a href="{% pageurl blog_page %}" class="blog_btn back blog-link">
-                                    <i class="fa fa-angle-left"></i> {% trans 'Return' %}
-                                </a>
-                            </div>
-                            {% entry_url self blog_page as post_url %}
-                            <div class="col text-center px-0">
-                                <div class="row justify-content-center">
-                                    {% post_to_facebook post_url '<span><i class="fa fa-facebook blog-icon mx-1 blog-link"></i></span>' %}
-                                    {% post_to_twitter self.title post_url '<span><i class="fa fa-twitter blog-icon mx-1"></i></span>' %}
-                                </div>
-                            </div>
-                            <div class="rss-sitemap col text-center px-0">
-                                <a href="{% feeds_url blog_page %}" target="_blank" title="RSS" class="blog-link">
-                                    <i class="fa fa-rss-square"></i> <span>{% trans 'Feed RSS' %}</span>
-                                </a>
-                            </div>
-                        </div>
-                    </section>
-                </article>
-                {% endblock blog_content %}
-            </div>
-        </div>
-        <!-- Bottom Bar
-        <div class="row blog_sidebar blog mt-4 justify-content-center">
-            <div class="col-12 col-md-6">
-                {% include 'puput/entry_links.html' with entry=self %}
-            </div>
-            <form name="search_form" class="search_form justify-content-center col-12 col-md-6" method="get" action="{% routablepageurl blog_page 'entries_search' %}">
-                <div class="input-group text-center mt-4">
-                    <input type="search" name="q" placeholder="{% trans 'Search' %}">
-                    <span class="input-group-btn col-1">
-                        <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+<!-- Entry Page Content -->
+<div class="container my-3 my-md-5 py-2 py-md-3 {% if page.get_template_theme_display == 'Dark' %}bg-primary{% endif %}">
+    <div class="row">
+        <div class="col-12 card shadow blog-card mb-4 px-0 px-md-3">
+            {% block blog_content %}
+            <article class="box page-content"
+            {% if self.id %}data-entry-page-update-comments-url="{% url 'entry_page_update_comments' self.id %}{% endif %}">
+            {% if self.header_image %}
+                <div class="row justify-content-center">                   
+                    <col class="image featured col-12 sm-col-8 lg-col-6 xl-col-4 ">
+                        {% image self.header_image fill-800x450 as header_image %}
+                        <img alt="{{ self.header_image.title }}" src="{{ header_image.url }}" class="text-center img-fluid">
                     </span>
                 </div>
-            </form>
-        </div> -->
+            {% endif %}    
+        {% include 'puput/entry_page_header.html' with entry=self %}
+            <section class="mt-4 mx-4 pt-4 pb-3 pb-md-5">
+            {{ self.body|richtext}}
+                <div class="row justify-content-center">
+                    <div class="col text-center px-0">
+                        <a href="{% pageurl blog_page %}" class="blog_btn back blog-link">
+                            <i class="fa fa-angle-left"></i> {% trans 'Return' %}
+                        </a>
+                    </div>
+                    {% entry_url self blog_page as post_url %}
+                    <div class="col text-center px-0">
+                        <div class="row justify-content-center">
+                            {% post_to_facebook post_url '<span><i class="fa fa-facebook blog-icon mx-1 blog-link"></i></span>' %}
+                            {% post_to_twitter self.title post_url '<span><i class="fa fa-twitter blog-icon mx-1"></i></span>' %}
+                        </div>
+                    </div>
+                    <div class="rss-sitemap col text-center px-0">
+                        <a href="{% feeds_url blog_page %}" target="_blank" title="RSS" class="blog-link">
+                            <i class="fa fa-rss-square"></i> <span>{% trans 'Feed RSS' %}</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </article>
+        {% endblock blog_content %}
     </div>
 </div>
 {% endblock content %}
