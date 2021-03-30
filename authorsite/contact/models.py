@@ -68,7 +68,7 @@ class ContactPage(Page, MenuPageMixin):
                 Message Body: {message}"""
                 # And send                
                 try:
-                    send_mail(subject_line, message_body, senders_email, [to_email], fail_silently=False)
+                    send_mail(subject_line, message_body, to_email, [to_email], fail_silently=False)
                 except BadHeaderError:
                     return HttpResponse('Invalid header found.')
                 success_pages = self.get_specific().get_children()
