@@ -31,7 +31,13 @@
         </div>
         <div class="col-lg-4 col-sm-6 align-self-center justify-self-center text-center">
             {% image page.book_image height-2000 as bookimg %}
+                {% if page.book_link_page %}
+                    <a href="{{ page.book_link_page.url }}">
+                {% endif %}
             <img src="{{bookimg.url}}" class="max-vh-60 pt-4 pb-4 px-2 mw-100 mt-2 mb-4 fade-in-book-cover">
+                {% if page.book_link_page %}
+                    </a>
+                {% endif %}
         </div>
 </div>
 {% endblock %}
