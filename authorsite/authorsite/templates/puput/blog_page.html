@@ -33,7 +33,7 @@
                             {% else %}
                                 {{ entry.body|richtext|truncatewords_html:70 }}
                             {% endif %}
-                            <div class="row">
+                            <div class="row mb-3">
                                 <div class="col-md-3">
                                     <a class="blog_btn continue" href="{{ post_url }}">{% trans 'Continue reading' %} &raquo;</a>
                                 </div>
@@ -42,12 +42,13 @@
                     </article>
                 {% endfor %}
         </div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mb-5">
             <ul class="row pagination text-center h3">
                 {% show_paginator %}
             </div>
         </div>
             {% endwith %}
         {% endblock blog_content %}
+    </div>
 </div>
 {% endblock content %}
