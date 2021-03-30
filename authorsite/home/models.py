@@ -1,7 +1,7 @@
 from django.db import models
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField
-from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 from django.conf import settings
 from wagtail.contrib.settings.models import BaseSetting, register_setting
@@ -13,11 +13,16 @@ class HomePage(Page):
     book_image = models.ForeignKey(
         'wagtailimages.Image', on_delete=models.SET_NULL, related_name='+', null=True)
     caption_text = RichTextField(blank=True, null=True)
+    book_link_page = models.ForeignKey(
+        'books.BookPage', on_delete=models.SET_NULL, blank=True, null=True, related_name='+', 
+        help_text="""Optional field: if you'd like your main book image to link to a book page, 
+        choose that page here.""")
 
     content_panels = Page.content_panels + [
         ImageChooserPanel('background_image'),
         ImageChooserPanel('book_image'),
         FieldPanel('caption_text', classname="full"),
+        PageChooserPanel('book_link_page'),
     ]
 
 class FanSiteHomePage(Page):
