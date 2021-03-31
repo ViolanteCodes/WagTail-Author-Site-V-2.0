@@ -34,7 +34,7 @@ a.menu-link:hover {
     height: 88vh;
 }
 .height-50 {
-    height: 50%;
+    max-height: 50%;
 }
 img.author-image {
     max-height: 40vh;
