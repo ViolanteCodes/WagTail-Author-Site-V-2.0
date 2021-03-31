@@ -35,6 +35,9 @@ a.menu-link:hover {
     width: 100vw !important;
     overflow-y: hidden;
 }
+.max-1440 {
+    max-width: 1800px;
+}
 .height-50 {
     max-height: 50%;
 }
@@ -296,16 +299,17 @@ span.endless_page_current {
         overflow-y: hidden;
     }
     img.book-image {
-        max-height: 80vh;
+        max-height: 700px;
         width: auto;
         /* position: relative;
         bottom: 0px;
     } */
     }
     img.author-image {
-        max-height: 60vh;
+        max-height: 500px;
         width: auto;
         position: relative;
+        left: 0px;
         bottom: 0px;
     }
 }
