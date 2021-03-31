@@ -14,32 +14,42 @@
 
 {% block content %}
 {% image page.background_image min-2000x400 as backgroundimg %}
-
-<div class="container-fluid row mx-0 align-items-center" style="background-image:url({{ backgroundimg.url }}); background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: left;
-    height: 80vh">
-        <div class="col-lg-4 col-sm-0">
-        </div>
-        <div class="col-lg-4 col-sm-6">
-            <div class="w-100 fade-in-quote">
-                <blockquote class="text-light h3 md-h1 text-center mt-3 text-uppercase">
-                    {{page.caption_text|richtext}}
-                </blockquote>
+<!-- Create full-wdith-outer container -->
+<div class="container-fluid home-container overflow-hidden">
+    <!-- Create nesting row to auto adjust margins/gutters -->
+    <div class="row justify-content-center">
+        <!-- Create top Book Row -->
+        {% block book-row %}
+        <div class="row book-row height-50 blog-card justify-content-center">
+            <div class="col-5 h-100 text-right">
+                    <blockquote class="text-light h3 md-h1 text-right mt-3 text-uppercase">
+                        {{page.caption_text|richtext}}
+                    </blockquote>
+            </div>
+            <div class="col-7 h-100 text-center">
+                {% if page.book_image %}
+                {% image page.book_image height-2000 as book_image %}
+                    <img src="{{book_image.url}}" alt="The cover of {{page.book_link_page.title}}" class="img-fluid">
+                {% endif %}
             </div>
         </div>
-        <div class="col-lg-4 col-sm-6 align-self-center justify-self-center text-center align-self-end md-align-self-center">
-            {% image page.book_image height-2000 as bookimg %}
-                {% if page.book_link_page %}
-                    <a href="{{ page.book_link_page.url }}">
+        {% endblock %}
+        <!-- Create bottom author row -->
+        {% block author-row %}
+        <div class="row h-50 justify-content-center">
+            <!-- Display author photo -->
+            <div class="col-12 justify-content-center text-center">
+                {% if page.author_image %}
+                {% image page.author_image height-2000 as author_image %}
+                <img src="{{author_image.url}}" alt="A photo of the author" class="author-image img-fluid align-bottom text-center mt-5">
                 {% endif %}
-            <img src="{{bookimg.url}}" class="max-vh-80 mw-100 pb-0 pt-0 pb-md-4 pt-md-4 px-2 mt-2 mb-0 mb-md-4 fade-in-book-cover">
-                {% if page.book_link_page %}
-                    </a>
-                {% endif %}
+            </div>
         </div>
-</div>
+        {% endblock %}
+    <!-- Close nesting row -->
+    </div>
+<!-- Close outer container -->
+</div> 
 {% endblock %}
 <!-- Cancel out block endoutercontainer -->
 {% block closeoutercontainer %}

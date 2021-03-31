@@ -8,7 +8,7 @@ from wagtail.contrib.settings.models import BaseSetting, register_setting
 
 class HomePage(Page):
     """A stylish, custom landing page with hero image background and book image."""
-    background_image = models.ForeignKey(
+    author_image = models.ForeignKey(
         'wagtailimages.Image', on_delete=models.SET_NULL, related_name='+', null=True)
     book_image = models.ForeignKey(
         'wagtailimages.Image', on_delete=models.SET_NULL, related_name='+', null=True)
@@ -19,7 +19,7 @@ class HomePage(Page):
         choose that page here.""")
 
     content_panels = Page.content_panels + [
-        ImageChooserPanel('background_image'),
+        ImageChooserPanel('author_image'),
         ImageChooserPanel('book_image'),
         FieldPanel('caption_text', classname="full"),
         PageChooserPanel('book_link_page'),

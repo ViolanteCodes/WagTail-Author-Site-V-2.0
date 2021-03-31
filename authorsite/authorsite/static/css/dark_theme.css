@@ -29,13 +29,18 @@ a.menu-link:hover {
     color: #f0ad4e !important;
     transition: ease 0.6s;
 }
-
-/* Landing Hero Image Styling */
-div.max-vh-75 {
-    max-height: 75vh;
+/* HomePage Styling */
+.home-container {
+    height: 88vh;
 }
-img.max-vh-60 {
-    max-height: 60vh;
+.height-50 {
+    height: 50%;
+}
+img.author-image {
+    max-height: 40vh;
+    width: auto;
+    position: relative;
+    bottom: 0;
 }
 /*Header Custom Styling (also used in footer)*/
 a.orange-link {
