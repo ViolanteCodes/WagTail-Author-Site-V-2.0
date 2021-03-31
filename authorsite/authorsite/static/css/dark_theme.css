@@ -100,7 +100,7 @@ textarea {
     font-size: x-large;
 }
 div.footer-box {
-    background-color: rgba(26, 26, 26, 75%);
+    background-color: rgba(26, 26, 26, 1);
 }
 a.footer-link {
     color:#C0C6C9;
