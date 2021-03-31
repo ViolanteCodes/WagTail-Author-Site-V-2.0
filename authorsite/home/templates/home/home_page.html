@@ -24,7 +24,7 @@
             <div class="col-12 text-center lg-text-right">
                 {% if page.author_image %}
                 {% image page.author_image height-2000 as author_image %}
-                <img src="{{author_image.url}}" alt="A photo of the author" class="author-image img-fluid align-bottom text-center mt-5 mt-xl-0 semi-transparent fade-in-3">
+                <img src="{{author_image.url}}" alt="A photo of the author" class="author-image img-fluid align-bottom text-center pt-5 semi-transparent fade-in-3">
                 {% endif %}
             </div>
         </div>
@@ -43,7 +43,7 @@
                             {{ word }} <br>
                         {% endfor %}                    
                     </blockquote>
-                    <div class="d-none d-md-block row justify-content-center mt-4 mb-2">
+                    <div class="d-none d-lg-block row justify-content-center mt-4 mb-2">
                         <a class="btn btn-outline-warning p-2 newsletter-font text-uppercase roll-over-bounce" 
                         href="{% pageurl page.book_link_page %}" role="button">Find out more</a>
                     </div>
