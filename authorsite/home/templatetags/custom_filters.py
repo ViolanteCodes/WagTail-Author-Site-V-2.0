@@ -23,3 +23,10 @@ def get_font_awesome_url():
     """Simple tag to pull fontawesome url from settings."""
     font_awesome_url = settings.FONT_AWESOME_URL
     return font_awesome_url
+
+@register.filter(name='split')
+def split(listname, splitter):
+    """
+    Returns the value turned into a list.
+    """
+    return listname.split(splitter)
