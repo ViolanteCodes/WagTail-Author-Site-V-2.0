@@ -29,12 +29,12 @@
                 </blockquote>
             </div>
         </div>
-        <div class="col-lg-4 col-sm-6 align-self-center justify-self-center text-center">
+        <div class="col-lg-4 col-sm-6 align-self-center justify-self-center text-center align-self-end md-align-self-center">
             {% image page.book_image height-2000 as bookimg %}
                 {% if page.book_link_page %}
                     <a href="{{ page.book_link_page.url }}">
                 {% endif %}
-            <img src="{{bookimg.url}}" class="max-vh-60 pt-4 pb-4 px-2 mw-100 mt-2 mb-4 fade-in-book-cover">
+            <img src="{{bookimg.url}}" class="max-vh-80 mw-100 pb-0 pt-0 pb-md-4 pt-md-4 px-2 mt-2 mb-0 mb-md-4 fade-in-book-cover">
                 {% if page.book_link_page %}
                     </a>
                 {% endif %}
