@@ -33,30 +33,32 @@
     <div class="center-container row justify-content-center align-items-center">
 
         <!-- Set side space for large screen offset -->
-        <div class="d-none d-xl-4"></div>
+        <div class="d-none"></div>
         <!-- End spacer -->
 
         <!-- Start Main Display Block -->
-
-        <!-- Add vertical spacers -->
-
-        <div class="col-12 justify-content-center align-items-center">
-            <div id="book-quote py-5">
-                <blockquote class="text-light h5 text-uppercase text-center">
-                    {{page.caption_text}}                 
-                </blockquote>
+        <div class="col-12 justify-content-center align-items-center text-center">
+            <!-- Nest Blockquote Row -->
+            <div class="row pb-2">
+                <div class="col-1">
+                </div>
+                <div id="book-quote" class="col-10">
+                    <blockquote class="text-light h5 text-uppercase text-center">
+                        {{page.caption_text}}                 
+                    </blockquote>
+                </div>
+                <div class="col-1">
+                </div>
             </div>
-            <div id="splash-box py-5">
-                <img src="{{book_image.url}}" class="img-fluid book-image">
+            <!-- End blockquote row -->
+            <div id="splash-box text-center py-3">
+                {% image page.book_image max-600x300 class="img-fluid book-image text-center" %}
             </div>
         </div>
-
-        <!-- Add vertical spacer -->
-
         <!-- End Main Display black -->
 
         <!-- Set side space for large screen offset -->
-        <div class="d-none d-xl-4"></div>
+        <div class="d-none"></div>
         <!-- End spacer -->
 
     <!-- Close center container -->
