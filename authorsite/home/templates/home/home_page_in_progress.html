@@ -1,0 +1,53 @@
+{% extends "base_dark.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags static %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+<!-- Cancel out startoutercontainerblock -->
+{% block startoutercontainer %}
+{% endblock %}
+
+<!-- Cancel out header block -->
+{% block header %}
+{% endblock %}
+
+{% block content %}
+{% image page.author_image height-2000 as author_image %}
+<div class="container-fluid h-75 align-items-center">
+<div class="row home-container mx-0 my-auto px-0 py-auto align-items-center" 
+    style="background-image:
+        url({{ author_image.url }}); 
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: left bottom;">
+        <!-- Row to set content width -->
+        <div class="row max-1440 mx-auto">
+            <div class="col-0 col-lg-4" id="spacer">
+            </div>
+            <div class="col-12 col-lg-4 darken">
+                <div class="px-2">
+                    <blockquote class="text-light h3 md-h1 text-center mt-3 text-uppercase">
+                        {{page.caption_text|richtext}}
+                    </blockquote>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4 align-self-center justify-self-center text-center align-self-end md-align-self-center darken">
+                {% image page.book_image height-2000 as book_img %}
+                    <div class="book-height">
+                        {% if page.book_link_page %}
+                            <a href="{{ page.book_link_page.url }}">
+                        {% endif %}
+                                <img src="{{book_img.url}}" class="py-auto px-2 mt-0 mt-md-2 mb-0 mb-md-4 img-fluid book-image">
+                        {% if page.book_link_page %}
+                            </a>
+                        {% endif %}
+                    </div>
+            </div>
+        </div>
+</div>
+</div>
+{% endblock %}
+<!-- Cancel out block endoutercontainer -->
+{% block closeoutercontainer %}
+{% endblock %}

@@ -12,6 +12,8 @@ class HomePage(Page):
         'wagtailimages.Image', on_delete=models.SET_NULL, related_name='+', null=True)
     book_image = models.ForeignKey(
         'wagtailimages.Image', on_delete=models.SET_NULL, related_name='+', null=True)
+    background_image =  models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.SET_NULL, related_name="+", null=True)
     caption_text = models.CharField(blank=True, null=True, max_length=250)
     book_link_page = models.ForeignKey(
         'books.BookPage', on_delete=models.SET_NULL, blank=True, null=True, related_name='+', 
@@ -21,6 +23,7 @@ class HomePage(Page):
     content_panels = Page.content_panels + [
         ImageChooserPanel('author_image'),
         ImageChooserPanel('book_image'),
+        ImageChooserPanel('background_image'),
         FieldPanel('caption_text', classname="full"),
         PageChooserPanel('book_link_page'),
     ]
