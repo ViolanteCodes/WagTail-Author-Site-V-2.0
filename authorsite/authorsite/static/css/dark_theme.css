@@ -33,6 +33,7 @@ a.menu-link:hover {
 
 .outer-container {
     height: 83vh;
+    min-width: 0;
 }
 .center-container {
     max-height: 800px;
@@ -40,12 +41,11 @@ a.menu-link:hover {
 }
 /* .photo-fade {
 } */
-.book-height {
-    max-height: 80%;
-}
+
 img.book-image {
     position: relative;
     z-index: 1;
+    max-width: auto;
 }
 img.author-image {
     max-height: 40vh;

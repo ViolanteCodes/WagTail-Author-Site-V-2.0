@@ -40,19 +40,27 @@
         <div class="col-12 justify-content-center align-items-center text-center">
             <!-- Nest Blockquote Row -->
             <div class="row pb-2">
-                <div class="col-1">
+                <div class="col-2">
                 </div>
-                <div id="book-quote" class="col-10">
+                <div id="book-quote" class="col-8">
                     <blockquote class="text-light h5 text-uppercase text-center">
                         {{page.caption_text}}                 
                     </blockquote>
                 </div>
-                <div class="col-1">
+                <div class="col-2">
                 </div>
             </div>
             <!-- End blockquote row -->
             <div id="splash-box text-center py-3">
-                {% image page.book_image max-600x300 class="img-fluid book-image text-center" %}
+                <div class="d-md-none">
+                {% image page.book_image max-300x300 class="book-image" %}
+                </div>
+                <div class="d-none d-md-block d-lg-none">
+                    {% image page.book_image max-400x400 class="book-image" %}
+                </div>
+                <div class="d-none d-lg-block">
+                    {% image page.book_image max-500x500 class="book-image" %}
+                </div>
             </div>
         </div>
         <!-- End Main Display black -->
