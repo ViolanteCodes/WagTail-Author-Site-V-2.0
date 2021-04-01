@@ -15,8 +15,9 @@
 <!-- End Cancellation -->
 
 {% block content %}
+
 {% image page.background_image height-2000 as background_image %}
-{% image page.book_image height-2000 as book_img %}
+{% image page.book_image height-2000 as book_image %}
 {% image page.author_image height-2000 as author_image %}
 
 
@@ -31,11 +32,13 @@
     <!-- Set up center container -->
     <div class="center-container row">
         <div class="col-12">
-            abc
+            <img src="{{book_image.url}}" class="img-fluid book-image">
         </div>
     </div>
+<!-- Close outer flex column  -->
 </div>
-{% endblock %}
+
+{% endblock content%}
 
 
 <!-- Cancel out block endoutercontainer -->

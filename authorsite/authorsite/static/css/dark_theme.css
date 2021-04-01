@@ -37,7 +37,6 @@ a.menu-link:hover {
 .center-container {
     max-height: 800px;
     max-width: 1440px;
-    max-height:700px;
 }
 .h- {
     height: 95vh;
@@ -49,7 +48,8 @@ a.menu-link:hover {
     max-height: 80%;
 }
 img.book-image {
-    object-fit: contain;
+    position: relative;
+    z-index: 1;
 }
 img.author-image {
     max-height: 40vh;
