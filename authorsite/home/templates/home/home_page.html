@@ -30,10 +30,36 @@
 <!-- End setup of flex column -->
 
     <!-- Set up center container -->
-    <div class="center-container row">
-        <div class="col-12">
-            <img src="{{book_image.url}}" class="img-fluid book-image">
+    <div class="center-container row justify-content-center align-items-center">
+
+        <!-- Set side space for large screen offset -->
+        <div class="d-none d-xl-4"></div>
+        <!-- End spacer -->
+
+        <!-- Start Main Display Block -->
+
+        <!-- Add vertical spacers -->
+
+        <div class="col-12 justify-content-center align-items-center">
+            <div id="book-quote py-5">
+                <blockquote class="text-light h5 text-uppercase text-center">
+                    {{page.caption_text}}                 
+                </blockquote>
+            </div>
+            <div id="splash-box py-5">
+                <img src="{{book_image.url}}" class="img-fluid book-image">
+            </div>
         </div>
+
+        <!-- Add vertical spacer -->
+
+        <!-- End Main Display black -->
+
+        <!-- Set side space for large screen offset -->
+        <div class="d-none d-xl-4"></div>
+        <!-- End spacer -->
+
+    <!-- Close center container -->
     </div>
 <!-- Close outer flex column  -->
 </div>
