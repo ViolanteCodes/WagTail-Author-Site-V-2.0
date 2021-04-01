@@ -33,39 +33,36 @@
     <div class="center-container row justify-content-center align-items-center overflow-hidden">
 
         <!-- Start Main Display Block -->
-
-        <div class="col-0">
-        </div>
-            <!-- Nest Blockquote Row -->
-            <div class="row pb-2">
-                <div class="col-2">
-                </div>
-                <div id="book-quote" class="col-8">
-                    <blockquote class="text-light h5 text-uppercase text-center">
-                        {{page.caption_text}}                 
-                    </blockquote>
-                </div>
-                <div class="col-2">
-                </div>
+        <!-- Blockquote block -->
+        <div class="row pb-2">
+            <div class="col-2">
             </div>
-            <!-- End blockquote row -->
-            <div id="splash-box text-center py-3">
-                <div class="d-md-none">
-                {% image page.book_image max-300x300 class="book-image" %}
-                </div>
-                <div class="d-none d-md-block d-lg-none">
-                    {% image page.book_image max-400x400 class="book-image" %}
-                </div>
-                <div class="d-none d-lg-block">
-                    {% image page.book_image max-500x500 class="book-image" %}
-                </div>
+            <div id="book-quote" class="col-8">
+                <blockquote class="d-lg-none text-light h5 text-uppercase text-center">
+                    {{page.caption_text}}                 
+                </blockquote>
+                <blockquote class="d-none d-lg-block text-light h3 text-uppercase text-center">
+                    {{page.caption_text}}                 
+                </blockquote>
+            </div>
+            <div class="col-2">
             </div>
         </div>
-        <div class="col-0">
+        <!-- End blockquote row -->
+        <!-- Start Book/author block -->
+        <div id="splash-box text-center py-3">
+            <div class="d-md-none">
+            {% image page.book_image max-300x300 class="book-image" %}
+            </div>
+            <div class="d-none d-md-block d-lg-none">
+            {% image page.book_image max-400x400 class="book-image" %}
+            </div>
+            <div class="d-none d-lg-block">
+            {% image page.book_image max-500x500 class="book-image" %}
+            </div>
         </div>
-        <!-- End Main Display black -->
-
-    <!-- Close center container -->
+        <!-- End block author block -->
+    <!-- Close main block -->
     </div>
 <!-- Close outer flex column  -->
 </div>
