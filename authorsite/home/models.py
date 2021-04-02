@@ -83,3 +83,11 @@ class SocialMediaSettings(BaseSetting):
         help_text='Your Instagram URL')
     twitter = models.URLField(
         help_text='Your Twitter URL')
+
+@register_setting
+class SpamSettings(BaseSetting):
+    """Social media settings, will show up in menu."""
+    spam_question = models.CharField(max_length=250,
+        help_text='Type in whatever you would like your spam question to be.')
+    spam_answer = models.CharField(max_length=250,
+        help_text='Type the answer to your spam question.')
