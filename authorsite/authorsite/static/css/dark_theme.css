@@ -53,8 +53,7 @@ img.book-image:hover {
     transform: scale(1.1);
     transition: ease 0.3s;
 } 
-img.author-image {
-    border-radius: 100%;
+.author-image {
     animation: fadeOutPhoto linear 5s forwards;
     -webkit-animation: fadeOutPhoto linear 5s forwards;
     -moz-animation: fadeOutPhoto linear 5s forwards;
