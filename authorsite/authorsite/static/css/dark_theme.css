@@ -259,18 +259,5 @@ span.endless_page_current {
     100% {opacity:0;}
     0% {opacity:1;}
 }
-@keyframes fly-in {
-    to { 
-      filter: blur(0);
-      transform: scale(1);
-      opacity: 1;
-    }
- }
-@-webkit-keyframes fly-in {
-    to { 
-      filter: blur(0);
-      transform: scale(1);
-      opacity: 1;
-    }
-}
+
 
