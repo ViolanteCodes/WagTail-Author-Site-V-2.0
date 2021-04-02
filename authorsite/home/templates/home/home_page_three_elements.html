@@ -1,0 +1,67 @@
+{% extends "base_dark.html" %}
+{% load wagtailcore_tags wagtailimages_tags static %}
+{% block body_class %}template-homepage{% endblock %}
+{% load custom_filters %}
+
+
+<!-- Cancel out startoutercontainerblock -->
+{% block startoutercontainer %}
+{% endblock %}
+
+<!-- Cancel out header block -->
+{% block header %}
+{% endblock %}
+
+{% block content %}
+{% image page.background_image min-2000x400 as backgroundimg %}
+<!-- Create full-wdith-outer container -->
+<div class="home-container container-fluid">
+    <div class="row h-100 align-items-center max-1440 mx-auto">
+    <!-- Create top Book Row -->
+    <div class="col-12 col-xl-6">
+        <div class="row justify-content-center">
+            <!-- Display author photo -->
+            <div class="col-12 text-center lg-text-right">
+                {% if page.author_image %}
+                {% image page.author_image height-2000 as author_image %}
+                <img src="{{author_image.url}}" alt="A photo of the author" class="author-image img-fluid align-bottom text-center pt-5 semi-transparent fade-in-3">
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-xl-6">
+        <div class="row book-row justify-content-center bg-primary shadow rounded fly-in">
+            <div class="col-5 text-right pr-0">
+                <div class="card bg-primary my-3 py-3 my-md-3">
+                    <blockquote class="text-light h4 text-right text-uppercase d-md-none">
+                        {% for word in page.caption_text|split:" " %}
+                            {{ word }} <br>
+                        {% endfor %}                    
+                    </blockquote>
+                    <blockquote class="d-none d-md-block text-light h3 text-right text-uppercase mt-lg-3">
+                        {% for word in page.caption_text|split:" " %}
+                            {{ word }} <br>
+                        {% endfor %}                    
+                    </blockquote>
+                    <div class="d-none d-lg-block row justify-content-center mt-4 mb-2">
+                        <a class="btn btn-outline-warning p-2 newsletter-font text-uppercase roll-over-bounce" 
+                        href="{% pageurl page.book_link_page %}" role="button">Find out more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-7 h-100 text-left pl-0">
+                {% image page.book_image height-2000 as book_image %}
+                <a href="{% pageurl page.book_link_page %}">
+                    <img src="{{book_image.url}}" alt="The cover of {{page.book_link_page.title}}" class="img-fluid author-image py-3 pl-lg-5 fly-in-second roll-over-bounce">
+                </a>
+            </div>
+        </div>
+    </div>
+<!-- Close outer container -->
+    </div>
+</div>
+ 
+{% endblock %}
+<!-- Cancel out block endoutercontainer -->
+{% block closeoutercontainer %}
+{% endblock %}
