@@ -12,12 +12,32 @@ from wagtail.admin.edit_handlers import FieldPanel
 
 from wagtailmenus.models import MenuPageMixin
 from wagtailmenus.panels import menupage_panel
+from wagtail.contrib.settings.models import BaseSetting, register_setting
+
+@register_setting
+class SpamSettings(BaseSetting):
+    """Social media settings, will show up in menu."""
+    spam_question = models.CharField(max_length=250,
+        help_text='Type in whatever you would like your spam question to be.')
+    spam_answer = models.CharField(max_length=250,
+        help_text='Type the answer to your spam question.')
 
 class ContactForm(forms.Form):
     your_name = forms.CharField(max_length = 100)
     your_email = forms.EmailField()
     subject = forms.CharField(max_length = 100)
     your_message = forms.CharField(widget = forms.Textarea)
+    spam_catcher = forms.CharField(max_length = 250)
+    # spam_answer = forms.CharField(
+    # #     label="In the box, type Maria's last name.", required=True, validators=[validate_spam_field])
+    #     social_media_settings = SocialMediaSettings.for_site(request.site)
+    # def validate_spam_field(value):
+    #     spam_error_message = f"""There seems to be an error with this field. Please put the 
+    #         answer to the question,"{settings.SpamSettings.spam_question}" in this field."""
+    #     if value.lower() != settings.SpamSettings.spam_answer.lower():
+    #         raise ValidationError(spam_error_message,
+    #             params={'value': value},
+    #         )
   
 class ContactPage(Page, MenuPageMixin):
     """A custom contact page with contact form."""
@@ -42,12 +62,24 @@ class ContactPage(Page, MenuPageMixin):
     subpage_types = ['contact.ContactSuccessPage', 'contact.MailChimpPage']
     parent_page_types = ['home.HomePage', 'home.FanSiteHomePage']
 
+    def validate_spam_field(value, request):
+        spam_settings = SpamSettings.for_request(request)
+        spam_error_message = f"""There seems to be an error with this field. Please put the 
+        answer to the question,"{spam_settings.spam_question}" in this field."""
+        if value.lower() != spam_settings.spam_answer.lower():
+            raise ValidationError(spam_error_message,
+                params={'value': value},
+        )
+
     def serve(self, request):
         if request.method == 'GET':
             form = ContactForm()
         else:
             form = ContactForm(request.POST)
             if form.is_valid():
+                value = form.cleaned_data['spam_catcher']
+                self.validate_spam_field(value)
+
                 # Clean the data
                 senders_name = form.cleaned_data['your_name']
                 senders_email = form.cleaned_data['your_email']
