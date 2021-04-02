@@ -47,7 +47,6 @@ img.book-image {
     -ms-animation: fadeInBounce linear 6s forwards;
     animation-delay: 1s;
     transition: ease 0.3s;
-    z-index: 50;
 }
 img.book-image:hover {
     transform: scale(1.1);
@@ -252,11 +251,11 @@ span.endless_page_current {
 }
 @keyframes fadeOutPhoto {
     100% {opacity:0;}
-    0% {opacity:1;}
+    0% {display:none;}
 }
 @-webkit-keyframes fadeOutPhoto {
     100% {opacity:0;}
-    0% {opacity:1;}
+    0% {display:none;}
 }
 
 
