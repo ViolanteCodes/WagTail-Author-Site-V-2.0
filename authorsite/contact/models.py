@@ -13,6 +13,7 @@ from wagtail.admin.edit_handlers import FieldPanel
 from wagtailmenus.models import MenuPageMixin
 from wagtailmenus.panels import menupage_panel
 from wagtail.contrib.settings.models import BaseSetting, register_setting
+from django.core.exceptions import ValidationError
 
 @register_setting
 class SpamSettings(BaseSetting):
