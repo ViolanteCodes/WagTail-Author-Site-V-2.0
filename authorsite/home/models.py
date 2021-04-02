@@ -83,4 +83,6 @@ class SocialMediaSettings(BaseSetting):
         help_text='Your Instagram URL')
     twitter = models.URLField(
         help_text='Your Twitter URL')
+    tiktok = models.URLField(
+        help_text="Your TikTok URL", blank=True, null=True)
 
