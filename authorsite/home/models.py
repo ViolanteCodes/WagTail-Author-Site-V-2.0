@@ -83,3 +83,4 @@ class SocialMediaSettings(BaseSetting):
         help_text='Your Instagram URL')
     twitter = models.URLField(
         help_text='Your Twitter URL')
+
