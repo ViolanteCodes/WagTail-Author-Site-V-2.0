@@ -24,6 +24,11 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
+if DEBUG == False:
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True 
+    SECURE_SSL_REDIRECT = True
+
 # Application definition
 
 INSTALLED_APPS = [
