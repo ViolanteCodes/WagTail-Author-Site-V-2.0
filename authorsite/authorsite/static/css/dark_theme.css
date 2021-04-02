@@ -40,9 +40,21 @@ a.menu-link:hover {
 }
 img.book-image {
     opacity: 0;
+    animation: fadeIn ease-in 5s forwards;
+    -webkit-animation: fadeIn ease-in 5s forwards;
+    -moz-animation: fadeIn ease-in 5s forwards;
+    -o-animation: fadeIn ease-in 5s forwards;
+    -ms-animation: fadeIn ease-in 5s forwards;
+    animation-delay: 1s;
 }
 img.author-image {
     border-radius: 100%;
+    animation: fadeOutPhoto ease 5s forwards;
+    -webkit-animation: fadeOutPhoto ease 5s forwards;
+    -moz-animation: fadeOutPhoto ease 5s forwards;
+    -o-animation: fadeOutPhoto ease 5s forwards;
+    -ms-animation: fadeOutPhoto ease 5s forwards;
+    animation-delay: 1s;
 }
 
 /*Header Custom Styling (also used in footer)*/
@@ -218,6 +230,9 @@ span.endless_page_current {
 }
 /*----Fade-in animations for HomePage----*/
 /*-------Animated Fade-in-----------*/
+.fade-out-photo {
+
+}
 .fade-in-1 {
     animation: fadeIn ease-in 1s;
     -webkit-animation: fadeIn ease-in 1s;
@@ -233,11 +248,7 @@ span.endless_page_current {
     -ms-animation: fadeIn ease-in 3s;
     }
 .fade-in-5 {
-    animation: fadeIn ease-in 5s;
-    -webkit-animation: fadeIn ease-in 5s;
-    -moz-animation: fadeIn ease-in 5s;
-    -o-animation: fadeIn ease-in 5s;
-    -ms-animation: fadeIn ease-in 5s;
+
 }
 .fly-in {
     animation: fly-in 1.2s ease forwards;
@@ -260,37 +271,7 @@ span.endless_page_current {
     transform: scale(1.1);
     transition: ease 0.3s;
 } 
-.darken {
-    opacity: 0;
-    animation: darken ease-in 5s;
-    -webkit-animation: darken ease-in 5s;
-    -moz-animation: darken ease-in 5s;
-    -o-animation: darken ease-in 5s;
-    -ms-animation: darken ease-in 5s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    animation-delay: 2s;
-}
 /*---fade-in keyframes--*/
-@keyframes darken {
-    0% {
-        background-color: none;
-        opacity: 0;
-    }
-    100% {
-        background-color: #141414;
-        opacity: 1;
-    }
-}
-@keyframes photoFade {
-    0% {
-        background-color: none;
-    }
-    100% {
-        background-color: #141414;
-        background-image: none;
-    }
-}
 @keyframes fadeIn {
     0% {opacity:0;}
     100% {opacity:1;}
@@ -298,6 +279,14 @@ span.endless_page_current {
 @-webkit-keyframes fadeIn {
     0% {opacity:0;}
     100% {opacity:1;}
+}
+@keyframes fadeOutPhoto {
+    100% {opacity:0;}
+    0% {opacity:1;}
+}
+@-webkit-keyframes fadeOutPhoto {
+    100% {opacity:0;}
+    0% {opacity:1;}
 }
 @keyframes fly-in {
     to { 
@@ -311,22 +300,6 @@ span.endless_page_current {
       filter: blur(0);
       transform: scale(1);
       opacity: 1;
-    }
-}
-@media (min-width:992) {
-    img.book-image {
-        max-height: 700px;
-        width: auto;
-        /* position: relative;
-        bottom: 0px;
-    } */
-    }
-    img.author-image {
-        max-height: 500px;
-        width: auto;
-        position: relative;
-        left: 0px;
-        bottom: 0px;
     }
 }
 
