@@ -170,7 +170,7 @@ STATIC_URL = '/static/'
 if DEBUG == True:
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 else:
-    MEDIA_ROOT = config(MEDIA_ROOT)
+    MEDIA_ROOT = config('MEDIA_ROOT')
 MEDIA_URL = '/media/'
 
 # Email Settings:
