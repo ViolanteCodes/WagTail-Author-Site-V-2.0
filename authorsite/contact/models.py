@@ -38,21 +38,21 @@ def validate_spam_field(value):
 class ContactForm(forms.Form):
     """A custom contact form with spam validation using user-supplied question and answer."""
     # get spam question and answer from base command
-    # from contact.models import SpamSettings
-    # spam_settings = SpamSettings.objects.get()  
-    # spam_question = spam_settings.spam_question
-    # # spam_answer = spam_settings.spam_answer
-    # # form fields
-    # your_name = forms.CharField(max_length = 100)
-    # your_email = forms.EmailField()
-    # subject = forms.CharField(max_length = 100)
-    # your_message = forms.CharField(widget = forms.Textarea)
-    # spam_question_message = f"""Spam catcher: {spam_question}"""
-    # spam_catcher = forms.CharField(
-    #     max_length = 250,
-    #     label=spam_question_message, 
-    #     required=True, 
-    #     validators=[validate_spam_field])
+    from contact.models import SpamSettings
+    spam_settings = SpamSettings.objects.get()  
+    spam_question = spam_settings.spam_question
+    # spam_answer = spam_settings.spam_answer
+    # form fields
+    your_name = forms.CharField(max_length = 100)
+    your_email = forms.EmailField()
+    subject = forms.CharField(max_length = 100)
+    your_message = forms.CharField(widget = forms.Textarea)
+    spam_question_message = f"""Spam catcher: {spam_question}"""
+    spam_catcher = forms.CharField(
+        max_length = 250,
+        label=spam_question_message, 
+        required=True, 
+        validators=[validate_spam_field])
 
 class ContactPage(Page, MenuPageMixin):
     """A custom contact page with contact form."""
