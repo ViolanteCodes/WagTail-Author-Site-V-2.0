@@ -43,15 +43,12 @@ a.menu-link:hover {
 } */
 
 img.book-image {
-    position: relative;
-    z-index: 1;
-    max-width: auto;
+    position: absolute;
+    z-index: 10;
+    display: none;
 }
 img.author-image {
-    max-height: 40vh;
-    width: auto;
-    position: relative;
-    bottom: 0px;
+    z-index: 20;
 }
 img.semi-transparent {
     opacity: 80%;
