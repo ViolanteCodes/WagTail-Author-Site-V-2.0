@@ -14,6 +14,7 @@ db.sqlite3
 
 # Static folder at project root
 /static/
+/static_root/
 
 # User contributed media
 /media/
