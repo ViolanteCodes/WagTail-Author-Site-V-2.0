@@ -40,20 +40,26 @@ a.menu-link:hover {
 }
 img.book-image {
     opacity: 0;
-    animation: fadeIn ease-in 5s forwards;
-    -webkit-animation: fadeIn ease-in 5s forwards;
-    -moz-animation: fadeIn ease-in 5s forwards;
-    -o-animation: fadeIn ease-in 5s forwards;
-    -ms-animation: fadeIn ease-in 5s forwards;
+    animation: fadeInBounce linear 6s forwards;
+    -webkit-animation: fadeInBounce linear 6s forwards;
+    -moz-animation: fadeInBounce linear 6s forwards;
+    -o-animation: fadeInBounce linear 6s forwards;
+    -ms-animation: fadeInBounce linear 6s forwards;
     animation-delay: 1s;
+    transition: ease 0.3s;
+    z-index: 50;
 }
+img.book-image:hover {
+    transform: scale(1.1);
+    transition: ease 0.3s;
+} 
 img.author-image {
     border-radius: 100%;
-    animation: fadeOutPhoto ease 5s forwards;
-    -webkit-animation: fadeOutPhoto ease 5s forwards;
-    -moz-animation: fadeOutPhoto ease 5s forwards;
-    -o-animation: fadeOutPhoto ease 5s forwards;
-    -ms-animation: fadeOutPhoto ease 5s forwards;
+    animation: fadeOutPhoto linear 5s forwards;
+    -webkit-animation: fadeOutPhoto linear 5s forwards;
+    -moz-animation: fadeOutPhoto linear 5s forwards;
+    -o-animation: fadeOutPhoto linear 5s forwards;
+    -ms-animation: fadeOutPhoto linear 5s forwards;
     animation-delay: 1s;
 }
 
@@ -228,42 +234,7 @@ span.endless_page_current {
     opacity: 1;
     animation-name: fade-in;
 }
-/*----Fade-in animations for HomePage----*/
 /*-------Animated Fade-in-----------*/
-.fade-out-photo {
-
-}
-.fade-in-1 {
-    animation: fadeIn ease-in 1s;
-    -webkit-animation: fadeIn ease-in 1s;
-    -moz-animation: fadeIn ease-in 1s;
-    -o-animation: fadeIn ease-in 1s;
-    -ms-animation: fadeIn ease-in 1s;
-    }
-.fade-in-3 {
-    animation: fadeIn ease-in 3s;
-    -webkit-animation: fadeIn ease-in 3s;
-    -moz-animation: fadeIn ease-in 3s;
-    -o-animation: fadeIn ease-in 3s;
-    -ms-animation: fadeIn ease-in 3s;
-    }
-.fade-in-5 {
-
-}
-.fly-in {
-    animation: fly-in 1.2s ease forwards;
-    opacity: 0;
-    transform: scale(4);
-    filter: blur(30px);
-    animation-delay: 1s;
-}
-.fly-in-second {
-    animation: fly-in 1.2s ease forwards;
-    opacity: 0;
-    transform: scale(4);
-    filter: blur(30px);
-    animation-delay: 2s;
-}
 .roll-over-bounce {
     transition: ease 0.3s;
 }
@@ -272,11 +243,11 @@ span.endless_page_current {
     transition: ease 0.3s;
 } 
 /*---fade-in keyframes--*/
-@keyframes fadeIn {
+@keyframes fadeInBounce {
     0% {opacity:0;}
     100% {opacity:1;}
 }
-@-webkit-keyframes fadeIn {
+@-webkit-keyframes fadeInBounce {
     0% {opacity:0;}
     100% {opacity:1;}
 }
