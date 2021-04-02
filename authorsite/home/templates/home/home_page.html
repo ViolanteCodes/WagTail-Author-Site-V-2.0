@@ -34,28 +34,25 @@
 
         <!-- Start Main Display Block -->
         <!-- Blockquote block -->
-        <div class="col-12 col-sm-6 col-md-5 pb-2 text-center justify-content-center align-items-center">
+        <div class="col-12 col-sm-6 col-md-5 pb-2 text-center justify-content-center align-items-center text-md-right">
             <div class="row pb-3">
-            <div class="col-2"> </div>
+            <div class="col-2 col-sm-4"> </div>
             <div id="book-quote" class="col-8">
-                <a href="{{page.book_link_page.url}}" alt="Click to see this author's most recent book.">
                 <blockquote class="d-md-none text-light h5 text-uppercase text-center">
                     {{page.caption_text}}                 
                 </blockquote>
-                </a>
                 <a href="{{page.book_link_page.url}}" alt="Click to see this author's most recent book.">
-                <blockquote class="d-none d-md-block text-light h3 text-uppercase text-center">
+                <blockquote class="d-none d-md-block text-light h3 text-uppercase text-right">
                     {{page.caption_text}}                 
                 </blockquote>
-                </a>
             </div>
             <div class="col-2"></div>
             </div>
         </div>
         <!-- End blockquote row -->
         <!-- Start Book/author block -->
-        <div class="col-12 col-sm-6 col-md-7 text-center">
-            <div class="row text-center justify-content-center">
+        <div class="col-12 col-sm-6 col-md-7 text-center text-md-left">
+            <div class="row text-center text-md-left justify-content-center justify-content-md-start">
             <a href="{{page.book_link_page.url}}" alt="Click to see this author's most recent book.">
                 <div class="d-md-none position-absolute">
                 {% image page.book_image max-300x300 class="book-image roll-over-bounce"%}
@@ -66,13 +63,13 @@
                 <div class="d-none d-lg-block position-absolute">
                 {% image page.book_image max-500x500 class="book-image roll-over-bounce" %}
                 </div>
-                <div class="d-md-none position-relative rounded-circle bg-primary author-image shadow border border-secondary">
+                <div class="d-md-none position-relative rounded-circle bg-primary author-image shadow border border-primary">
                 {% image page.author_image max-300x300 class="author-image rounded-circle"%}
                 </div>
-                <div class="d-none d-md-block d-lg-none position-relative rounded-circle bg-primary author-image shadow border border-secondary">
+                <div class="d-none d-md-block d-lg-none position-relative rounded-circle bg-primary author-image shadow border border-primary">
                 {% image page.author_image max-400x400 class="author-image rounded-circle" %}
                 </div>
-                <div class="d-none d-lg-block position-relative rounded-circle bg-primary author-image shadow border border-secondary">
+                <div class="d-none d-lg-block position-relative rounded-circle bg-primary author-image shadow border border-primary">
                 {% image page.author_image max-500x500 class="author-image rounded-circle" %}
                 </div>
             </a>
